@@ -4,8 +4,8 @@ package main
 
 import "fmt"
 
-// fibonacci is a function that returns
-// a function that returns an int.
+// fibonacci merupakan fungsi yang mengembalikan
+// sebuah fungsi dengan nilai balik sebuah int.
 func fibonacci() func() int {
 }
 
