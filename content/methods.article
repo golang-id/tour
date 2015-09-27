@@ -1,250 +1,267 @@
-Methods and interfaces
-This lesson covers methods and interfaces, the constructs that define objects and their behavior.
+Method dan Interface
+Pelajaran ini membahas method dan interface, konstruksi yang membuat objek dan perilakunya.
 
-The Go Authors
+Para Penggubah Go
 https://golang.org
 
-* Methods
+* Method
 
-Go does not have classes.
-However, you can define methods on types.
+Go tidak memiliki class.
+Namun, anda bisa mendefinisikan method pada tipe.
 
-A method is a function with a special _receiver_ argument.
+Sebuah method adalah sebuah fungsi dengan argumen khusus _receiver_.
 
-The receiver appears in its own argument list between the `func` keyword and
-the method name.
+_receiver_ muncul pada bagian antara kata kunci `func` and nama method.
 
-In this example, the `Abs` method has a receiver of type `Vertex` named `v`.
+Pada contoh berikut, method `Abs` memiliki _receiver_ dengan tipe `Vertex`
+bernama `v`.
 
 .play methods/methods.go
 
-* Methods are functions
+* Method adalah fungsi
 
-Remember: a method is just a function with a receiver argument.
+Ingat: sebuah method hanyalah fungsi dengan argumen sebuah _receiver_.
 
-Here's `Abs` written as a regular function with no change in functionality.
+Berikut ini `Abs` ditulis sebagai fungsi biasa tanpa ada perubahan pada
+fungsionalitas.
 
 .play methods/methods-funcs.go
 
-* Methods continued
+* Method lanjutan
 
-You can declare a method on non-struct types, too.
+Anda bisa mendeklarasikan method pada tipe selain struct just.
 
-In this example we see a numeric type `MyFloat` with an `Abs` method.
+Pada contoh berikut kita dapat melihat sebuah tipe numerik `MyFloat` dengan
+method `Abs`.
 
-You can only declare a method with a receiver whose type is defined in the same
-package as the method.
-You cannot declare a method with a receiver whose type is defined in another
-package (which includes the built-in types such as `int`).
+Anda hanya bisa mendeklerasikan sebuah method dengan sebuah receiver yang
+tipenya didefinisikan di paket yang sama dengan method-nya.
+Anda tidak bisa mendeklarasikan sebuah method dengan receiver yang tipenya
+didefinisikan dipaket yang lain (termasuk tipe dasar seperti `int`).
 
 .play methods/methods-continued.go
 
-* Pointer receivers
+* Method dengan pointer-receiver
 
-You can declare methods with pointer receivers.
+Anda bisa mendeklarasikan method dengan _receiver_ berupa pointer.
 
-This means the receiver type has the literal syntax `*T` for some type `T`.
-(Also, `T` cannot itself be a pointer such as `*int`.)
+Hal ini berarti tipe _receiver_ memiliki sintaks `*T` untuk tipe `T`.
+(Dan juga, `T` itu sendiri tidak bisa berupa pointer ke tipe dasar seperti
+ `*int`.)
 
-For example, the `Scale` method here is defined on `*Vertex`.
+Sebagai contohnya, method `Scale` didefinisikan pada `*Vertex`.
 
-Methods with pointer receivers can modify the value to which the receiver
-points (as `Scale` does here).
-Since methods often need to modify their receiver, pointer receivers are more
-common than value receivers.
+Method dengan pointer-receiver dapat mengubah nilai yang diacu oleh receiver
+(tidak seperti `Scale`).
+Karena method seringkali perlu mengubah receiver-nya, pointer-receiver lebih
+umum ditemukan daripada receiver yang bukan pointer.
 
-Try removing the `*` from the declaration of the `Scale` function on line 16
-and observe how the program's behavior changes.
+Coba hapus `*` dari deklarasi fungsi `Scale` pada baris 16 dan perhatikan
+bagaimana perilaku program berubah.
 
-With a value receiver, the `Scale` method operates on a copy of the original
-`Vertex` value.
-(This is the same behavior as for any other function argument.)
-The `Scale` method must have a pointer receiver to change the `Vertex` value
-declared in the `main` function.
+Dengan receiver-sebagai-value, method `Scale` beroperasi pada salinan dari
+nilai asli `Vertex`.
+(Perilaku ini juga berlaku pada argumen pada fungsi.)
+Method `Scale` harus memiliki sebuah pointer-receiver untuk dapat mengubah
+nilai `Vertex` yang dideklarasikan pada fungsi `main`.
 
 .play methods/methods-pointers.go
 
-* Pointers and functions
+* Pointers dan fungsi
 
-Here we see the `Abs` and `Scale` methods rewritten as functions.
+Di sini kita lihat method `Abs` dan `Scale` dibuat ulang sebagai fungsi.
 
-Again, try removing the `*` from line 16.
-Can you see why the behavior changes?
-What else did you need to change for the example to compile?
+Sekali lagi, coba hilangkan `*` pada baris 16.
+Bisakah anda melihat perubahan perilakunya?
+Apa yang harus anda ubah selanjutnya supaya contoh tersebut dapat di
+_compile_?
 
-(If you're not sure, continue to the next page.)
+(Jika anda tidak yakin, lanjutkan ke tahap berikutnya.) 
 
 .play methods/methods-pointers-explained.go
 
-* Methods and pointer indirection
+* Method dan pointer tidak langsung
 
-Comparing the previous two programs, you might notice that
-functions with a pointer argument must take a pointer:
+Bandingkan dua program sebelumnya, anda mungkin memperhatikan bahwa fungsi
+dengan sebuah argumen pointer harus menerima sebuah pointer:
 
-	var v Vertex
+	var V Vertex
 	ScaleFunc(v, 5)  // Compile error!
 	ScaleFunc(&v, 5) // OK
 
-while methods with pointer receivers take either a value or a pointer as the
-receiver when they are called:
+Sementara method dengan pointer-receiver dapat menerima sebuah nilai atau
+sebuah pointer sebagai receiver saat dipanggil:
 
 	var v Vertex
-	v.Scale(5)  // OK
+	v.Scale(5)   // OK
 	p := &v
-	p.Scale(10) // OK
+	p.Scale(10)  // OK
 
-For the statement `v.Scale(5)`, even though `v` is a value and not a pointer,
-the method with the pointer receiver is called automatically.
-That is, as a convenience, Go interprets the statement `v.Scale(5)` as
-`(&v).Scale(5)` since the `Scale` method has a pointer receiver.
+Untuk perintah `v.Scale(5)`, walaupun `v` adalah sebuah nilai bukan sebuah
+pointer, method dengan pointer-receiver akan dipanggil secara otomatis.
+Maka, untuk mempermudah, Go menginterpretasikan perintah `v.Scale(5)` sebagai
+`(&v).Scale(5)` karena method Scale memiliki pointer-receiver. 
 
 .play methods/indirection.go
 
-* Methods and pointer indirection (2)
+* Method dan pointer tidak langsung (2)
 
-The equivalent thing happens in the reverse direction.
+Hal yang sama berlaku sebaliknya.
 
-Functions that take a value argument must take a value of that specific type:
+Fungsi yang menerima argumen nilai harus mendapatkan sebuah nilai dari tipe
+yang spesifik:
 
 	var v Vertex
 	fmt.Println(AbsFunc(v))  // OK
 	fmt.Println(AbsFunc(&v)) // Compile error!
 
-while methods with value receivers take either a value or a pointer as the
-receiver when they are called:
+Sementara method dengan value-receiver bisa menerima sebuah nilai atau sebuah
+pointer sebagai receiver saat dipanggil:
 
 	var v Vertex
 	fmt.Println(v.Abs()) // OK
 	p := &v
 	fmt.Println(p.Abs()) // OK
 
-In this case, the method call `p.Abs()` is interpreted as `(*p).Abs()`.
+Pada kasus ini, pemanggilan method `p.Abs()` diinterpretasikan sebagai
+`(*p).Abs()`.
 
 .play methods/indirection-values.go
 
-* Choosing a value or pointer receiver
+* Memilih receiver nilai atau pointer
 
-There are two reasons to use a pointer receiver.
+Ada dua alasan kenapa menggunakan _pointer-receiver_.
 
-The first is so that the method can modify the value that its receiver points to.
+Pertama adalah supaya method dapat mengubah nilai yang ditunjuk oleh receiver.
 
-The second is to avoid copying the value on each method call.
-This can be more efficient if the receiver is a large struct, for example.
+Kedua adalah untuk menghindari menyalin nilai setiap kali method dipanggil.
+Hal ini bisa lebih efisien jika receiver adalah sebuah struct yang besar,
+sebagai contohnya.
 
-In this example, both `Scale` and `Abs` are with receiver type `*Vertex`,
-even though the `Abs` method needn't modify its receiver.
+Pada contoh ini, `Scale` dan `Abs` memiliki tipe receiver `*Vertex`, walaupun
+method `Abs` tidak perlu mengubah receiver-nya.
 
-In general, all methods on a given type should have either value or pointer
-receivers, but not a mixture of both.
-(We'll see why over the next few pages.)
+Secara umum, semua method dari sebuah tipe harus memiliki receiver sebagai
+nilai atau sebagai pointer, tapi tidak gabungan dari keduanya.
+(Kita akan lihat alasannya pada beberapa laman berikutnya.)
 
 .play methods/methods-with-pointer-receivers.go
 
-* Interfaces
+* Interface
 
-An _interface_type_ is defined as a set of method signatures.
+Sebuah _type_interface_ didefinisikan sebagai sebuah kumpulan method penanda.
 
-A value of interface type can hold any value that implements those methods.
+Nilai dari tipe interface dapat menyimpan nilai apapun yang mengimplementasikan method tersebut.
 
-*Note:* There is an error in the example code on line 22.
-`Vertex` (the value type) doesn't implement `Abser` because
-the `Abs` method is defined only on `*Vertex` (the pointer type).
+*Catatan:* Terdapat kesalahan di contoh kode pada baris 22.
+`Vertex` (tipe nilai) tidak memenuhi `Abser` karena method `Abs` hanya
+didefinisikan pada `*Vertex` (tipe pointer).
 
 .play methods/interfaces.go
 
-* Interfaces are implemented implicitly
+* Interface dipenuhi secara implisit
 
-A type implements an interface by implementing its methods.
-There is no explicit declaration of intent, no "implements" keyword.
+Sebuah tipe mengimplementasikan sebuah interface dengan mengimplementasikan
+method-methodnya.
+Tidak ada deklarasi eksplisit; tidak ada perintah "implements".
 
-Implicit interfaces decouple the definition of an interface from its
-implementation, which could then appear in any package without prearrangement.
+Interface implisit memisahkan definisi dari sebuah interface dari
+implementasinya, yang bisa saja muncul dalam paket manapun tanpa adanya
+penataan sebelumnya.
 
 .play methods/interfaces-are-satisfied-implicitly.go
 
-* Interface values
+* Nilai interface
 
-Under the hood, interface values can be thought of as a tuple of a value and a
-concrete type:
+Isi interface dapat dibayangkan sebagai sebuah pasangan nilai dan sebuah tipe:
 
-	(value, type)
+	(nilai, tipe)
 
-An interface value holds a value of a specific underlying concrete type.
+Sebuah interface mengandung sebuah nilai dari tipe tertentu.
 
-Calling a method on an interface value executes the method of the same name on
-its underlying type.
+Memanggil suatu method terhadap suatu interface akan mengeksekusi method
+dengan nama yang sama pada tipe yang dipegangnya.
 
 .play methods/interface-values.go
 
-* Interface values with nil underlying values
+* Interface dengan nilai nil
 
-If the concrete value inside the interface itself is nil,
-the method will be called with a nil receiver.
+Jika nilai sebenarnya dari interface itu sendiri adalah nil, method akan
+dipanggil dengan receiver bernilai nil.
 
-In some languages this would trigger a null pointer exception,
-but in Go it is common to write methods that gracefully handle being called
-with a nil receiver (as with the method `M` in this example.)
+Pada beberapa bahasa pemrograman hal ini akan mengakibatkan null pointer
+exception atau kesalahan karena pointer bernilai kosong, tapi pada Go sangat
+umum menulis method dengan receiver bernilai nil (seperti method `M` pada
+contoh di sebelah.)
 
-Note that an interface value that holds a nil concrete value is itself non-nil.
+Ingatlah bahwa sebuah isi interface yang mengandung nilai konkrit nil
+sebenarnya adalah non-nil.
 
 .play methods/interface-values-with-nil.go
 
-* Nil interface values
+* Isi interface dengan nil
 
-A nil interface value holds neither value nor concrete type.
+Sebuah isi interface yang nil tidak mengandung nilai dan tipe konkrit.
 
-Calling a method on a nil interface is a run-time error because there is no
-type inside the interface tuple to indicate which _concrete_ method to call.
+Memanggil sebuah method pada sebuah interface yang nil akan mengakibatkan
+kesalahan run-time karena tidak ada tipe di dalam interface yang
+mengindikasikan method _konkrit_ yang akan dipanggil.
 
 .play methods/nil-interface-values.go
 
-* The empty interface
+* Interface kosong
 
-The interface type that specifies zero methods is known as the _empty_interface_:
+Tipe interface yang tidak memiliki method dikenal juga dengan interface
+kosong:
 
 	interface{}
 
-An empty interface may hold values of any type.
-(Every type implements at least zero methods.)
+Sebuah interface kosong bisa menyimpan nilai dari tipe apapun.
+(Setiap tipe mengimplementasikan paling tidak nol method.)
 
-Empty interfaces are used by code that handles values of unknown type.
-For example, `fmt.Print` takes any number of arguments of type `interface{}`.
+Interface kosong digunakan pada kode yang menangani nilai yang tidak
+diketahui.
+Sebagai contohnya, `fmt.Print` mengambil sejumlah argumen dengan tipe
+`interface{}`.
 
 .play methods/empty-interface.go
 
-* Type assertions
+* Penegasan tipe
 
-A _type_assertion_ provides access to an interface value's underlying concrete value.
+Suatu _penegasan_tipe_ menyediakan akses ke isi interface di balik nilai
+konkritnya.
 
 	t := i.(T)
 
-This statement asserts that the interface value `i` holds the concrete type `T`
-and assigns the underlying `T` value to the variable `t`.
+Perintah di atas menegaskan bahwa isi interface `i` menyimpan tipe konkrit `T`
+dan memberikan nilai `T` ke variabel `t`.
 
-If `i` does not hold a `T`, the statement will trigger a panic.
+Jika `i tidak mengandung tipe `T`, perintah tersebut akan memicu `panic`.
 
-To _test_ whether an interface value holds a specific type,
-a type assertion can return two values: the underlying value
-and a boolean value that reports whether the assertion succeeded.
+Untuk _memeriksa_ apakah sebuah isi interface benar mengandung tipe tertentu,
+penegasan tipe bisa mengembalikan dua nilai: nilai yang dikandung dan sebuah
+nilai boolean yang memberitahu apakah penegasan sukses atau tidak.
 
 	t, ok := i.(T)
 
-If `i` holds a `T`, then `t` will be the underlying value and `ok` will be true.
+Jika `i` mengandung `T`, maka `t` akan menyimpan nilai dan `ok` akan bernilai
+true.
 
-If not, `ok` will be false and `t` will be the zero value of type `T`,
-and no panic occurs.
+Jika tidak, `ok` akan bernilai false dan `t` akan bernilai kosong sesuai
+dengan tipe `T`, dan panic tidak akan terjadi.
 
-Note the similarity between this syntax and that of reading from a map.
+Ingatlah kesamaan antara sintaks ini dengan membaca dari sebuah map.
 
 .play methods/type-assertions.go
 
-* Type switches
+* Penggunaan switch untuk tipe
 
-A _type_switch_ is a construct that permits several type assertions in series.
+Sebuah _tipe_switch_ adalah bentukan yang membolehkan beberapa penegasan tipe
+secara serial.
 
-A type switch is like a regular switch statement, but the cases in a type
-switch specify types (not values), and those values are compared against
-the type of the value held by the given interface value.
+Tipe switch sama seperti perintah switch biasa, tapi dengan nilai case mengacu
+pada tipe (bukan nilai), dan nilai case tersebut dibandingkan dengan tipe yang
+dikandung oleh isi interface yang diberikan.
 
 	switch v := i.(type) {
 	case T:
@@ -255,55 +272,57 @@ the type of the value held by the given interface value.
 		// no match; here v has the same type as i
 	}
 
-The declaration in a type switch has the same syntax as a type assertion `i.(T)`,
-but the specific type `T` is replaced with the keyword `type`.
+Deklarasi dalam sebuah tipe switch memiliki sintaks yang sama dengan penegasan
+tipe `i.(T)`, tapi dengan `T` diganti dengan kata `type`.
 
-This switch statement tests whether the interface value `i`
-holds a value of type `T` or `S`.
-In each of the `T` and `S` cases, the variable `v` will be of type
-`T` or `S` respectively and hold the value held by `i`.
-In the default case (where there is no match), the variable `v` is
-of the same interface type and value as `i`.
+Perintah switch berikut menguji apakah isi interface `i` mengandung sebuah
+nilai dari tipe `T` atau `S`.
+Pada setiap `case` dari `T` dan `S`, variabel `v` akan memiliki tipe `T` atau
+`S` dan memiliki nilai yang dikandung oleh `i`.
+Pada `default case` (yang mana tidak ada tipe yang sama ditemukan), variabel
+`v` akan memiliki tipe dan nilai yang sama dengan `i`.
 
 .play methods/type-switches.go
 
-* Stringers
+* Stringer
 
-One of the most ubiquitous interfaces is [[//golang.org/pkg/fmt/#Stringer][`Stringer`]] defined by the [[//golang.org/pkg/fmt/][`fmt`]] package.
+Interface yang ada dimanapun yaitu
+[[//golang.org/pkg/fmt/#Stringer][`Stringer`]]
+didefinisikan oleh paket
+[[//golang.org/pkg/fmt/][`fmt`]].
 
 	type Stringer interface {
 		String() string
 	}
 
-A `Stringer` is a type that can describe itself as a string. The `fmt` package
-(and many others) look for this interface to print values.
+Sebuah `Stringer` adalah suatu tipe yang mendeskripsikan dirinya sendiri
+sebagai string.
+Paket `fmt` (dan banyak lainnya) menggunakan interface ini untuk mencetak
+nilai.
 
 .play methods/stringer.go
 
-* Exercise: Stringers
+* Latihan: Stringer
 
-Make the `IPAddr` type implement `fmt.Stringer` to print the address as
-a dotted quad.
+Buat tipe `IPAddr` yang mengimplementasikan `fmt.Stringer` untuk mencetak alamat dengan empat tanda titik.
 
-For instance, `IPAddr{1,`2,`3,`4}` should print as `"1.2.3.4"`.
+Misalnya, `IPAddr{1,`2,`3,`4}` mengeluarkan `"1.2.3.4"`.
 
 .play methods/exercise-stringer.go
 
-* Errors
+* Error
 
-Go programs express error state with `error` values.
+Program Go mengekspresikan keadaan error dengan nilai `error`.
 
-The `error` type is a built-in interface similar to `fmt.Stringer`:
+Tipe `error` adalah interface buatan mirip dengan `fmt.Stringer`:
 
 	type error interface {
 		Error() string
 	}
 
-(As with `fmt.Stringer`, the `fmt` package looks for the `error` interface when
-printing values.)
+Seperti dengan `fmt.Stringer`, paket `fmt` mencari interface `error` saat mencetak nilai.
 
-Functions often return an `error` value, and calling code should handle errors
-by testing whether the error equals `nil`.
+Fungsi terkadang mengembalikan nilai `error`, dan kode yang memanggilnya harus menangani error dengan memeriksa apakah error bernilai `nil`.
 
 	i, err := strconv.Atoi("42")
 	if err != nil {
@@ -312,76 +331,89 @@ by testing whether the error equals `nil`.
 	}
 	fmt.Println("Converted integer:", i)
 
-A nil `error` denotes success; a non-nil `error` denotes failure.
+`error` yang nil menandakan sukses; `error` yang bukan-nil menandakan adanya kesalahan.
 
 .play methods/errors.go
 
-* Exercise: Errors
+* Latihan: Error
 
-Copy your `Sqrt` function from the [[/flowcontrol/8][earlier exercise]] and modify it to return an `error` value.
+Salin fungsi `Sqrt` anda dari
+[[/flowcontrol/8][latihan sebelumnya]]
+dan ubah untuk mengembalikan nilai `error`.
 
-`Sqrt` should return a non-nil error value when given a negative number, as it doesn't support complex numbers.
+`Sqrt` seharusnya mengembalikan nilai error bukan-nil saat diberikan angka negatif, karena tidak mendukung bilangan kompleks.
 
-Create a new type
+Buatlah tipe baru
 
 	type ErrNegativeSqrt float64
 
-and make it an `error` by giving it a
+dan buat dia sebagai `error` dengan memberikan method
 
 	func (e ErrNegativeSqrt) Error() string
 
-method such that `ErrNegativeSqrt(-2).Error()` returns `"cannot`Sqrt`negative`number:`-2"`.
+sehingga `ErrNegativeSqrt(-2).Error()` mengembalikan `"cannot`Sqrt`negative`number:`-2"`.
 
-*Note:* A call to `fmt.Sprint(e)` inside the `Error` method will send the program into an infinite loop. You can avoid this by converting `e` first: `fmt.Sprint(float64(e))`. Why?
+*Catatan:* Pemanggilan `fmt.Sprint(e)` di dalam method `Error` akan membuat
+program berulang tak henti.
+Anda dapat menghindari hal tersebut dengan mengkonversi `e`: `fmt.Sprint(float64(e))`.
+_Kenapa?_
 
-Change your `Sqrt` function to return an `ErrNegativeSqrt` value when given a negative number.
+Ubah fungsi `Sqrt` mengembalikan nilai `ErrNegativeSqrt` saat diberikan nilai negatif.
 
 .play methods/exercise-errors.go
 
-* Readers
+* Reader
 
-The `io` package specifies the `io.Reader` interface,
-which represents the read end of a stream of data.
+Paket `io` memiliki spesifikasi interface `io.Reader`, yang merepresentasikan berakhirnya pembacaan sebuah aliran data.
 
-The Go standard library contains [[https://golang.org/search?q=Read#Global][many implementations]] of this interface, including files, network connections, compressors, ciphers, and others.
+Standar pustaka Go memiliki
+[[https://golang.org/search?q=Read#Global][banyak implementasi]]
+dari interface tersebut, termasuk berkas, koneksi jaringan, kompresi,
+_cipher_, dll.
 
-The `io.Reader` interface has a `Read` method:
+Interface `io.Reader` memiliki method `Read`:
 
 	func (T) Read(b []byte) (n int, err error)
 
-`Read` populates the given byte slice with data and returns the number of bytes
-populated and an error value. It returns an `io.EOF` error when the stream
-ends.
+`Read` mengisi parameter slice byte dengan data dan mengembalikan jumlah byte yang diisi dan nilai errornya.
+Ia mengembalikan error `io.EOF` saat aliran data berakhir.
 
-The example code creates a
+Contoh kode membuat sebuah 
 [[//golang.org/pkg/strings/#Reader][`strings.Reader`]]
-and consumes its output 8 bytes at a time.
+dan memproses 8 bytes keluarannya.
 
 .play methods/reader.go
 
-* Exercise: Readers
+* Latihan: Reader
 
-Implement a `Reader` type that emits an infinite stream of the ASCII character
-`'A'`.
+Implementasikan sebuah tipe `Reader` yang menghilangkan karakter ASCII `'A'` yang panjang.
 
 .play methods/exercise-reader.go
 
-* Exercise: rot13Reader
+* Latihan: rot13Reader
 
-A common pattern is an [[https://golang.org/pkg/io/#Reader][io.Reader]] that wraps another `io.Reader`, modifying the stream in some way.
+Pola umumnya adalah sebuah
+[[https://golang.org/pkg/io/#Reader][io.Reader]]
+yang membungkus `io.Reader` lainnya, memodifikasi aliran data dengan cara tertentu.
 
-For example, the [[https://golang.org/pkg/compress/gzip/#NewReader][gzip.NewReader]] function takes an `io.Reader` (a stream of compressed data) and returns a `*gzip.Reader` that also implements `io.Reader` (a stream of the decompressed data).
+Sebagai contohnya, fungsi 
+[[https://golang.org/pkg/compress/gzip/#NewReader][gzip.NewReader]]
+mengambil `io.Reader` (aliran data terkompres) dan mengembalikan `*gzip.Reader` yang juga mengimplementasikan `io.Reader` (aliran data tak-terkompres).
 
-Implement a `rot13Reader` that implements `io.Reader` and reads from an `io.Reader`, modifying the stream by applying the [[https://en.wikipedia.org/wiki/ROT13][rot13]] substitution cipher to all alphabetical characters.
+Implementasikan `rot13Reader` yang mengimplementasikan `io.Reader` dengan
+membaca dari `io.Reader`, modifikasi aliran data dengan menerapkan penyandian
+[[https://en.wikipedia.org/wiki/ROT13][rot13]]
+terhadap semua karakter alfabet.
 
-The `rot13Reader` type is provided for you.
-Make it an `io.Reader` by implementing its `Read` method.
+Tipe `rot13Reader` telah disediakan untuk anda.
+Buatlah ia menjadi `io.Reader` dengan mengimplementasikan method `Read`.
 
 .play methods/exercise-rot-reader.go
 
-* Images
+* Gambar
 
-[[https://golang.org/pkg/image/#Image][Package image]] defines the `Image` interface:
+[[http://golang.org/pkg/image/#Image][Paket image]]
+mendefinisikan interface `Image`:
 
 	package image
 
@@ -391,32 +423,46 @@ Make it an `io.Reader` by implementing its `Read` method.
 		At(x, y int) color.Color
 	}
 
-*Note*: the `Rectangle` return value of the `Bounds` method is actually an
-[[https://golang.org/pkg/image/#Rectangle][`image.Rectangle`]], as the
-declaration is inside package `image`.
+*Catatan*: Nilai kembalian `Rectangle` dari method `Bounds` sebenarnya adalah
+deklarasi
+[[https://golang.org/pkg/image/#Rectangle][`image.Rectangle`]]
+yang telah ada di dalam paket `image`.
 
-(See [[https://golang.org/pkg/image/#Image][the documentation]] for all the details.)
+(Lihat
+[[https://golang.org/pkg/image/#Image][dokumentasi untuk paket Image]]
+untuk lebih jelasnya.)
 
-The `color.Color` and `color.Model` types are also interfaces, but we'll ignore that by using the predefined implementations `color.RGBA` and `color.RGBAModel`. These interfaces and types are specified by the [[https://golang.org/pkg/image/color/][image/color package]]
+Tipe `color.Color` dan `color.Model` juga interface, tapi kita akan
+menggunakan implementasi `color.RGBA` dan `color.RGBAModel`.
+Interface dan tipe tersebut dispesifikasikan oleh 
+[[https://golang.org/pkg/image/color/][paket image/color]].
 
 .play methods/images.go
 
-* Exercise: Images
+* Latihan: Gambar
 
-Remember the [[/moretypes/18][picture generator]] you wrote earlier? Let's write another one, but this time it will return an implementation of `image.Image` instead of a slice of data.
+Masih ingat generator gambar yang anda buat sebelumnya?
+Mari kita buat satu lagi, tapi kali ini mengembalikan implementasi dari
+`image.Image` bukan sebuah slice dari data.
 
-Define your own `Image` type, implement [[https://golang.org/pkg/image/#Image][the necessary methods]], and call `pic.ShowImage`.
+Definisikan tipe `Image` anda sendiri, kemudian implementasikan
+[[https://golang.org/pkg/image/#Image][method-method yang dibutuhkan]]
+, dan panggil `pic.ShowImage`.
 
-`Bounds` should return a `image.Rectangle`, like `image.Rect(0,`0,`w,`h)`.
+`Bounds` seharusnya mengembalikan `image.Rectangle`, seperti `image.Rect(0,`0,`w,`h)`.
 
-`ColorModel` should return `color.RGBAModel`.
+`ColorModel` seharusnya mengembalikan `color.RGBAModel`.
 
-`At` should return a color; the value `v` in the last picture generator corresponds to `color.RGBA{v,`v,`255,`255}` in this one.
+`At` seharusnya mengembalikan sebuah warna;
+nilai `v` pada generator gambar berkoresponden dengan `color.RGBA{v,`v,`255,`255}`.
 
 .play methods/exercise-images.go
 
-* Congratulations!
+* Selamat!
 
-You finished this lesson!
+Anda telah menyelesaikan pelajaran ini!
 
-You can go back to the list of [[/list][modules]] to find what to learn next, or continue with the [[javascript:click('.next-page')][next lesson]].
+Anda bisa kembali ke daftar
+[[/list][modul]]
+untuk melihat apa yang bisa dipelajari selanjutnya, atau meneruskan ke
+[[javascript:click(".next-page")][pelajaran selanjutnya]].

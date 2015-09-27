@@ -1,4 +1,4 @@
-/* Copyright 2012 The Go Authors.   All rights reserved.
+/* Copyright 2012-2015 The Go Authors.   All rights reserved.
  * Use of this source code is governed by a BSD-style
  * license that can be found in the LICENSE file.
  */
@@ -9,44 +9,44 @@ angular.module('tour.values', []).
 // List of modules with description and lessons in it.
 value('tableOfContents', [{
     'id': 'mechanics',
-    'title': 'Using the tour',
-    'description': '<p>Welcome to a tour of the <a href="https://golang.org">Go programming language</a>. The tour covers the most important features of the language, mainly:</p>',
+    'title': 'Penggunaan Tur',
+    'description': '<p>Selamat datang di tur <a href="https://golang.org">bahasa pemrograman Go</a>. Tur ini melingkupi fitur paling penting dari bahasa, pada umumnya:</p>',
     'lessons': ['welcome']
 }, {
     'id': 'basics',
-    'title': 'Basics',
-    'description': '<p>The starting point, learn all the basics of the language.</p><p>Declaring variables, calling functions, and all the things you need to know before moving to the next lessons.</p>',
+    'title': 'Dasar',
+    'description': '<p>Langkah awal, pelajari semua dasar bahasa.</p><p>Deklarasi variabel, pemanggilan fungsi, dan semua hal yang perlu anda ketahui sebelum pindah ke pelajaran selanjutnya.</p>',
     'lessons': ['basics', 'flowcontrol', 'moretypes']
 }, {
     'id': 'methods',
-    'title': 'Methods and interfaces',
-    'description': '<p>Learn how to define methods on types, how to declare interfaces, and how to put everything together.</p>',
+    'title': 'Method dan interface',
+    'description': '<p>Belajar cara mendefinisikan method pada tipe, cara deklarasi interface, dan cara menggabungkan keduanya.</p>',
     'lessons': ['methods']
 }, {
     'id': 'concurrency',
-    'title': 'Concurrency',
-    'description': '<p>Go provides concurrency features as part of the core language.</p><p>This module goes over goroutines and channels, and how they are used to implement different concurrency patterns.</p>',
+    'title': 'Konkurensi',
+    'description': '<p>Go menyediakan fitur konkurensi sebagai bagian dari inti bahasa.</p><p>Modul ini ada pada goroutines dan channels, dan cara menggunakannya pada pola konkurensi yang berbeda.</p>',
     'lessons': ['concurrency']
 }]).
 
 // translation
 value('translation', {
-    'off': 'off',
-    'on': 'on',
-    'syntax': 'Syntax-Highlighting',
-    'lineno': 'Line-Numbers',
+    'off': 'hidup',
+    'on': 'nyala',
+    'syntax': 'Penekanan-Sintaks',
+    'lineno': 'Nomor-Baris',
     'reset': 'Reset Slide',
-    'format': 'Format Source Code',
-    'kill': 'Kill Program',
-    'run': 'Run',
-    'compile': 'Compile and Run',
-    'more': 'Options',
-    'toc': 'Table of Contents',
-    'prev': 'Previous',
-    'next': 'Next',
-    'waiting': 'Waiting for remote server...',
-    'errcomm': 'Error communicating with remote server.',
-    'submit-feedback': 'Send feedback about this page',
+    'format': 'Format Sumber Kode',
+    'kill': 'Matikan Program',
+    'run': 'Jalankan',
+    'compile': 'Kompilasi dan Jalankan',
+    'more': 'Opsi',
+    'toc': 'Daftar Isi',
+    'prev': 'Sebelumnya',
+    'next': 'Selanjutnya',
+    'waiting': 'Menunggu server...',
+    'errcomm': 'Kesalahan komunikasi dengan server.',
+    'submit-feedback': 'Kirim umpan-balik tentang halaman ini',
 
     // GitHub issue template: update repo and messaging when translating.
     'github-repo': 'github.com/golang/tour',

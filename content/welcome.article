@@ -1,51 +1,65 @@
-Welcome!
-Learn how to use this tour: including how to navigate the different lessons and how to run code.
+Selamat datang!
+Belajar cara menggunakan tur ini: termasuk cara navigasi pelajaran dan cara menjalankan kode.
 
-The Go Authors
+Para Penggubah Go
 https://golang.org
 
-* Hello, 世界
+* Halo, 世界
 
-Welcome to a tour of the [[https://golang.org/][Go programming language]].
+Selamat datang di tur
+[[https://golang.org/][bahasa pemrograman Go]]
+.
 
-The tour is divided into a list of modules that you can
-access by clicking on
-[[javascript:highlight(".logo")][A Tour of Go]] on the top left of the page.
+Tur ini dibagi menjadi beberapa modul yang dapat anda akses dengan mengklik pada
+[[javascript:highlight(".logo")][Tur Go]]
+di bagian kiri atas halaman.
 
-You can also view the table of contents at any time by clicking on the [[javascript:highlightAndClick(".nav")][menu]] on the top right of the page.
+Anda juga dapat setiap saat melihat daftar isi dengan mengklik pada
+[[javascript:highlightAndClick(".nav")][menu]]
+di kanan atas halaman.
 
-Throughout the tour you will find a series of slides and exercises for you
-to complete.
+Selama tur ini anda akan menemukan sekumpulan slide dan latihan untuk anda kerjakan.
 
-You can navigate through them using
+Anda bisa menavigasinya lewat
 
-- [[javascript:highlight(".prev-page")]["previous"]] or `PageUp` to go to the previous page,
+- [[javascript:highlight(".prev-page")]["sebelum"]]
+atau `PageUp` untuk kembali ke halaman sebelumnya,
 
-- [[javascript:highlight(".next-page")]["next"]] or `PageDown` to go to the next page.
+- [[javascript:highlight(".next-page")]["selanjutnya"]]
+atau `PageDown` untuk ke halaman selanjutnya.
 
-The tour is interactive. Click the
-[[javascript:highlightAndClick("#run")][Run]] button now
-(or press `Shift` + `Enter`) to compile and run the program on
-#appengine: a remote server.
-your computer.
-The result is displayed below the code.
+Tur ini interaktif. Klik pada tombol
+[[javascript:highlightAndClick("#run")][Jalankan]]
+sekarang (atau tekan `Shift` + `Enter`) untuk mengkompilasi dan menjalankan
+program pada
+#appengine: server.
+komputer anda.
+Hasilnya ditampilkan di bawah kode.
 
-These example programs demonstrate different aspects of Go. The programs in the tour are meant to be starting points for your own experimentation.
+Contoh program tersebut menampilkan aspek dari Go.
+Program yang ada di tur ditujukan sebagai titik awal bagi eksperimen anda.
 
-Edit the program and run it again.
+Ubah program tersebut dan jalankan lagi.
 
-When you click on [[javascript:highlightAndClick("#format")][Format]]
-(shortcut: `Ctrl` + `Enter`), the text in the editor is formatted using the
-[[https://golang.org/cmd/gofmt/][gofmt]] tool. You can switch syntax highlighting on and off
-by clicking on the [[javascript:highlightAndClick(".syntax-checkbox")][syntax]] button.
+Saat anda mengklik pada tombol
+[[javascript:highlightAndClick("#format")][Format]]
+(atau `Ctrl` + `Enter`), teks di bagian editor akan diformat menggunakan alat
+[[https://golang.org/cmd/gofmt/][gofmt]].
+Anda bisa menghidup atau mematikan sintaks dengan mengklik pada tombol
+[[javascript:highlightAndClick(".syntax-checkbox")][sintaks]]
 
-When you're ready to move on, click the [[javascript:highlightAndClick(".next-page")][right arrow]] below or type the `PageDown` key.
+Anda bisa mengaktifkan pewarnaan sintaks dengan mengklik pada tombol
+[[javascript:highlightAndClick(".syntax-checkbox"][sintaks]].
+
+Saat anda selesai, klik
+[[javascript:highlightAndClick(".next-page")][panah kanan]]
+di bawah atau tekan `PageDown`.
 
 .play welcome/hello.go
 
-* Go local
+* Go Lokal
 
-The tour is available in other languages:
+Tur ini tersedia dalam beberapa bahasa:
 
 - [[https://go-tour-ar.appspot.com/][Arabic — العربية]]
 - [[https://go-tour-br.appspot.com/][Brazilian Portuguese — Português do Brasil]]
@@ -55,8 +69,6 @@ The tour is available in other languages:
 - [[https://go-tour-cz.appspot.com/][Czech — Česky]]
 - [[https://go-tour-fr.appspot.com/][French — Français]]
 - [[https://go-tour-de.appspot.com/][German — Deutsch]]
-- [[https://go-tour-he.appspot.com/][Hebrew — עִבְרִית]]
-- [[https://go-tour-id2.appspot.com/][Indonesian — Bahasa Indonesia]]
 - [[https://go-tour-ita.appspot.com/][Italian — Italiano]]
 - [[https://go-tour-jp.appspot.com/][Japanese — 日本語]]
 - [[https://go-tour-kr.appspot.com/][Korean — 한국어]]
@@ -68,49 +80,61 @@ The tour is available in other languages:
 - [[https://go-tour-ua.appspot.com/][Ukrainian — Українська]]
 - [[https://go-tour-uz.appspot.com/][Uzbek — Ўзбекча]]
 
-Click the [[javascript:highlightAndClick(".next-page")]["next"]] button or type `PageDown` to continue.
+Klik tombol
+[[javascript:highlightAndClick(".next-page")]["selanjutnya"]]
+atau tekan `PageDown` untuk melanjutkan.
 
 #appengine: * Go offline (optional)
 #appengine:
-#appengine: This tour is also available as a stand-alone program that you can use
-#appengine: without access to the internet. It builds and runs the code samples on
-#appengine: your own machine.
+#appengine: Tur ini juga tersedia dalam program yang berjalan tersendiri yang
+#appengine: dapat anda gunakan tanpa akses internet.
 #appengine:
-#appengine: To run the tour locally, you'll need to first
-#appengine: [[https://golang.org/doc/install][install Go]] and then run:
+#appengine: Tur yang berjalan sendiri lebih cepat, karena ia membuat and
+#appengine: menjalankan sampel program di mesin anda sendiri.
+#appengine:
+#appengine: Untuk dapat menjalakan tur secara lokal, pertama
+#appengine: [[https://golang.org/dl/][unduh and pasang Go]]
+#appengine: kemudian jalankan program tour dengan cara,
 #appengine:
 #appengine:   go get golang.org/x/tour
 #appengine:
-#appengine: This will place a `tour` binary in your
-#appengine: [[https://golang.org/doc/code.html#Workspaces][workspace]]'s `bin` directory.
-#appengine: When you run the tour program, it will open a web browser displaying
-#appengine: your local version of the tour.
+#appengine: Program `tour` akan membuka peramban web yang menampilkan versi
+#appengine: lokal dari tur.
 #appengine:
-#appengine: Of course, you can continue to take the tour through this web site.
+#appengine: Atau, tentu saja, anda bisa melanjutkan tur di situs ini.
 
-#appengine: * The Go Playground
+#appengine: * Go Playground
 #appengine:
-#appengine: This tour is built atop the [[https://play.golang.org/][Go Playground]], a
-#appengine: web service that runs on [[https://golang.org/][golang.org]]'s servers.
+#appengine: Tur ini dibuat dengan
+#appengine: [[https://play.golang.org/][Go Playground]]
+#appengine: , sebuah layanan web yang berjalan di atas server
+#appengine: [[https://golang.org/][golang.org]].
 #appengine:
-#appengine: The service receives a Go program, compiles, links, and runs the program inside
-#appengine: a sandbox, then returns the output.
+#appengine: Layanan tersebut menerima program Go, mengkompilasi, dan
+#appengine: menjalankan program di dalam _sandbox_, dan mengembalikan
+#appengine: keluaran.
 #appengine:
-#appengine: There are limitations to the programs that can be run in the playground:
+#appengine: Ada beberapa batasan untuk program yang berjalan di _playground_:
 #appengine:
-#appengine: - In the playground the time begins at 2009-11-10 23:00:00 UTC (determining the significance of this date is an exercise for the reader). This makes it easier to cache programs by giving them deterministic output.
+#appengine: - Di _playground_ waktu dimulai dari 2009-11-10 23:00:00 UTC
+#appengine: (mengetahui kenapa menggunakan tanggal tersebut adalah latihan
+#appengine: bagi pembaca).
+#appengine: Hal ini membuat program lebih mudah di- _cache_ dengan memberikan
+#appengine: nilai keluaran yang pasti.
 #appengine:
-#appengine: - There are also limits on execution time and on CPU and memory usage, and the program cannot access external network hosts.
+#appengine: - Waktu eksekusi, penggunaan CPU, dan _memory_ juga memiliki
+#appengine: batasan, dan program tidak dapat mengakses jaringan eksternal.
 #appengine:
-#appengine: The playground uses the latest stable release of Go.
+#appengine: _Playground_ menggunakan rilis stabil dari Go.
 #appengine:
-#appengine: Read "[[https://blog.golang.org/playground][Inside the Go Playground]]" to learn more.
+#appengine: Bacalah "
+#appengine: [[https://blog.golang.org/playground][Inside the Go Playground]]
+#appengine: " untuk belajar lebih lanjut.
 #appengine:
 #appengine: .play welcome/sandbox.go
 
-* Congratulations
+* Selamat
 
-You've finished the first module of the tour!
+Anda telah menyelesaikan modul pertama dari tur!
 
-Now click on [[javascript:highlightAndClick(".logo")][A Tour of Go]] to find out what else
-you can learn about Go, or go directly to the [[javascript:click('.next-page')][next lesson]].
+Sekarang klik pada [[javascript:highlightAndClick(".logo")][Sebuah Tur dari Go]] untuk menemukan apa saja yang dapat anda pelajari tentang Go, atau langsung ke [[javascript:click(".next-page")][pelajaran selanjutnya]].

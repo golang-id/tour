@@ -1,178 +1,196 @@
-Flow control statements: for, if, else, switch and defer
-Learn how to control the flow of your code with conditionals, loops, switches and defers.
+Perintah kontrol alur: for, if, else, switch, dan defer
+Belajar cara mengontrol alur kode dengan kondisional, pengulangan, `switch` dan `defer`.
 
-The Go Authors
+Para Penggubah Go
 https://golang.org
 
-* For
+* Pengulangan ("for")
 
-Go has only one looping construct, the `for` loop.
+Go hanya memiliki satu konstruk pengulangan, yaitu `for`.
 
-The basic `for` loop has three components separated by semicolons:
+Dasar dari pengulangan `for` yaitu memiliki tiga komponen yang dipisahkan oleh
+titik-koma:
 
-- the init statement: executed before the first iteration
-- the condition expression: evaluated before every iteration
-- the post statement: executed at the end of every iteration
+- perintah awal: dieksekusi sebelum iterasi pertama
+- ekspresi kondisi: dievaluasi sebelum iterasi pertama
+- perintah akhir: dieksekusi disetiap akhir iterasi
 
-The init statement will often be a short variable declaration, and the
-variables declared there are visible only in the scope of the `for`
-statement.
+Perintah awal biasanya berupa deklarasi variabel singkat, dan variabel yang
+dideklarasikan tersebut hanya dapat digunakan dalam skop perintah `for`.
 
-The loop will stop iterating once the boolean condition evaluates to `false`.
+Pengulangan akan berhenti saat ekspresi kondisi bernilai `false`.
 
-*Note:* Unlike other languages like C, Java, or JavaScript there are no parentheses
-surrounding the three components of the `for` statement and the braces `{`}` are
-always required.
+*Catatan:* Tidak seperti bahasa C, Java, atau JavaScript, tidak ada tanda
+kurung yang digunakan menutupi ketiga komponen dari perintah `for` dan tanda
+kurung kurawal `{`}` selalu dibutuhkan..
 
 .play flowcontrol/for.go
 
-* For continued
+* Pengulangan lanjutan
 
-The init and post statements are optional.
+Perintah awal dan akhir adalah opsional. 
 
 .play flowcontrol/for-continued.go
 
-* For is Go's "while"
+* For adalah Go-nya "while"
 
-At that point you can drop the semicolons: C's `while` is spelled `for` in Go.
+Dengan cara ini anda bisa menghilangkan titik-koma: `while` nya C dieja dengan `for` pada Go.
 
 .play flowcontrol/for-is-gos-while.go
 
-* Forever
+* Pengulangan selamanya
 
-If you omit the loop condition it loops forever, so an infinite loop is compactly expressed.
+Jika anda mengosongkan kondisi maka pengulangan akan berjalan selamanya, dengan ini pengulangan tanpa henti dapat diekspresikan dengan singkat.
 
 .play flowcontrol/forever.go
 
-* If
+* Kondisi ("if")
 
-Go's `if` statements are like its `for` loops; the expression need not be
-surrounded by parentheses `(`)` but the braces `{`}` are required.
+Perintah `if` mirip seperti pada pengulangan `for`; ekspresinya tidak harus
+ditutupi dengan tanda-kurung `(`)` namun tanda `{`}` diharuskan.
 
 .play flowcontrol/if.go
 
-* If with a short statement
+* Kondisi "if" singkat
 
-Like `for`, the `if` statement can start with a short statement to execute before the condition.
+Seperti pada `for`, perintah `if` bisa diawali dengan perintah singkat untuk dieksekusi sebelum kondisi.
 
-Variables declared by the statement are only in scope until the end of the `if`.
+Variabel yang dideklarasikan pada perintah singkat tersebut hanya berlaku sampai lingkup sampai kondisi `if` berakhir.
 
-(Try using `v` in the last `return` statement.)
+(Coba gunakan `v` di akhir perintah `return`.)
 
 .play flowcontrol/if-with-a-short-statement.go
 
-* If and else
+* Kondisi "if" dan "else"
 
-Variables declared inside an `if` short statement are also available inside any
-of the `else` blocks.
+Variabel yang dideklarasikan dalam perintah singkat `if` juga dapat digunakan
+dalam blok `else`.
 
-(Both calls to `pow` return their results before the call to `fmt.Println`
-in `main` begins.)
+(Kedua pemanggilan ke `pow` dieksekusi dan dikembalikan sebelum pemanggilan ke
+ `fmt.Println` di `main` dimulai.)
 
 .play flowcontrol/if-and-else.go
 
-* Exercise: Loops and Functions
+* Latihan: Pengulangan dan Fungsi
 
-As a way to play with functions and loops, let's implement a square root function: given a number x, we want to find the number z for which z² is most nearly x.
+Cara sederhana untuk bermain dengan pengulangan dan fungsi yaitu dengan
+mengimplementasikan fungsi kuadrat: diberikan sebuah input bilangan x, kita
+akan cari bilangan z yang mana z² paling mendekati ke x.
 
-Computers typically compute the square root of x using a loop.
-Starting with some guess z, we can adjust z based on how close z² is to x,
-producing a better guess:
+Komputer biasanya menghitung akar kuadrat dari x menggunakan sebuah
+pengulangan.
+Dimulai dari nilai z, kita dapat mengatur z berdasarkan berapa dekat z²
+terhadap x, menghasilkan terkaan yang lebih mendekati:
 
-	z -= (z*z - x) / (2*z)
+	z -= (z * z - x) / (2*z)
 
-Repeating this adjustment makes the guess better and better
-until we reach an answer that is as close to the actual square root as can be.
+Dengan mengulangi persamaan di atas akan membuat pencarian kita semakin
+mendekati nilai kuadrat yang sebenarnya.
 
-Implement this in the `func`Sqrt` provided.
-A decent starting guess for z is 1, no matter what the input.
-To begin with, repeat the calculation 10 times and print each z along the way.
-See how close you get to the answer for various values of x (1, 2, 3, ...)
-and how quickly the guess improves.
+Implementasikan persamaan tersebut dalam `func`Sqrt` yang telah disediakan.
+Nilai awal yang aman untuk z adalah 1, berapapun inputnya.
+Sebagai permulaan, ulangi perhitungan 10 kali dan cetak nilai z.
+Lihat seberapa dekat hasil perhitungan anda dengan jawaban dari beragam nilai
+x (1, 2, 3, ...) dan seberapa cepat tebakan anda diperbaiki.
 
-Hint: To declare and initialize a floating point value,
-give it floating point syntax or use a conversion:
+Petunjuk: untuk mendeklarasikan dan menginisialisasi nilai floating point,
+gunakan sintaks floating point atau konversi:
 
 	z := 1.0
 	z := float64(1)
 
-Next, change the loop condition to stop once the value has stopped
-changing (or only changes by a very small amount).
-See if that's more or fewer than 10 iterations.
-Try other initial guesses for z, like x, or x/2.
-How close are your function's results to the [[https://golang.org/pkg/math/#Sqrt][math.Sqrt]] in the standard library?
+Selanjutnya, ubah kondisi pengulangan untuk berhenti saat nilainya sudah tidak
+berubah lagi (atau hanya berubah dengan delta yang sangat kecil).
+Lihat apakah iterasinya lebih sedikit atau lebih banyak dari 10 iterasi.
+Coba nilai terkaan awal untuk z, misalnya x, atau x/2.
+Seberapa dekat hasil anda dengan nilai
+[[https://golang.org/pkg/math/#Sqrt][math.Sqrt]] 
+dari pustaka standar?
 
-(*Note:* If you are interested in the details of the algorithm, the z² − x above
-is how far away z² is from where it needs to be (x), and the division by 2z is the derivative
-of z², to scale how much we adjust z by how quickly z² is changing.
-This general approach is called [[https://en.wikipedia.org/wiki/Newton%27s_method][Newton's method]].
-It works well for many functions but especially well for square root.)
+(*Catatan:* Jika anda tertarik dengan rincian dari algoritma, persamaan z² − x
+adalah seberapa jauh nilai z² dari yang diinginkan (x), dan pembagian dengan
+(2*z) adalah turunan dari z², untuk melihat berapa banyak kita harus
+memperbaiki nilai z dengan melihat berapa cepat z² berubah.
+Pendekatan ini disebut dengan
+[[https://en.wikipedia.org/wiki/Newton%27s_method][metode Newton]].
+Ia bekerja dengan baik untuk beragam fungsi,
+terutama kuadrat.
 
 .play flowcontrol/exercise-loops-and-functions.go
 
-* Switch
+* Perintah "switch"
 
-A `switch` statement is a shorter way to write a sequence of `if`-`else` statements.
-It runs the first case whose value is equal to the condition expression.
+Perintah switch untuk mempermudah membuat beberapa perintah kondisi
+`if`-`else`.
+Go akan menjalankan case pertama yang nilainya sama dengan ekspresi kondisi
+yang diberikan.
 
-Go's switch is like the one in C, C++, Java, JavaScript, and PHP,
-except that Go only runs the selected case, not all the cases that follow.
-In effect, the `break` statement that is needed at the end of each case in those
-languages is provided automatically in Go.
-Another important difference is that Go's switch cases need not
-be constants, and the values involved need not be integers.
+Perintah switch pada Go hampir sama dengan bahasa C, C++, Java, Javascript,
+dan PHP;
+hanya saja pada Go akan menjalankan case yang terpilih, bukan semua case yang
+ada selanjutnya.
+Efeknya, perintah `break` yang biasanya dibutuhkan diakhir setiap case pada
+bahasa lainnya dibuat secara otomatis oleh Go.
+Perbedaan penting lainnya yaitu ekspresi kondisi case pada Go tidak harus
+konstanta, dan nilainya tidak harus integer.
 
 .play flowcontrol/switch.go
 
-* Switch evaluation order
+* Urutan evaluasi "switch"
 
-Switch cases evaluate cases from top to bottom, stopping when a case succeeds.
+Kondisi pada `switch` dievaluasi dari atas ke bawah, berhenti saat sebuah
+kondisi sukses.
 
-(For example,
+Sebagai contoh,
 
 	switch i {
 	case 0:
 	case f():
 	}
 
-does not call `f` if `i==0`.)
+tidak akan memanggil fungsi `f` jika `i==0`.
 
-#appengine: *Note:* Time in the Go playground always appears to start at
-#appengine: 2009-11-10 23:00:00 UTC, a value whose significance is left as an
-#appengine: exercise for the reader.
+#appengine: *Catatan:* waktu dalam Go playground selalu berawal dari
+#appengine: 2009-11-10 23:00:00 UTC, sebuah nilai yang makna bisa dicari oleh
+#appengine: pembaca.
 
 .play flowcontrol/switch-evaluation-order.go
 
-* Switch with no condition
+* Perintah "switch" tanpa kondisi
 
-Switch without a condition is the same as `switch`true`.
+Perintah `switch` tanpa sebuah kondisi sama seperti `switch`true`.
 
-This construct can be a clean way to write long if-then-else chains.
+Konstruksi ini merupakan cara yang bersih untuk menulis rantaian if-then-else
+yang panjang.
 
 .play flowcontrol/switch-with-no-condition.go
 
-* Defer
+* Perintah "defer"
 
-A defer statement defers the execution of a function until the surrounding
-function returns.
+Perintah `defer` menunda eksekusi dari sebuah fungsi sampai fungsi yang
+melingkupinya selesai.
 
-The deferred call's arguments are evaluated immediately, but the function call
-is not executed until the surrounding function returns.
+Argumen untuk pemanggilan `defer` dievaluasi langsung, tapi pemanggilan fungsi
+tidak dieksekusi sampai fungsi yang melingkupinya selesai.
 
 .play flowcontrol/defer.go
 
-* Stacking defers
+* Penundaan bertumpuk
 
-Deferred function calls are pushed onto a stack. When a function returns, its
-deferred calls are executed in last-in-first-out order.
+Fungsi yang dipanggil dengan `defer` di- _push_ ke sebuah _stack_.
+Saat fungsi berakhir, panggilan yang tadi ditunda dieksekusi dengan urutan
+last-in-first-out (yang terakhir masuk menjadi pertama keluar).
 
-To learn more about defer statements read this
-[[https://blog.golang.org/defer-panic-and-recover][blog post]].
+Untuk belajar lebih lanjut tentang perintah `defer` bacalah
+[[https://blog.golang.org/defer-panic-and-recover][blog berikut]].
 
 .play flowcontrol/defer-multi.go
 
-* Congratulations!
+* Selamat!
 
-You finished this lesson!
+Anda telah menyelesaikan pelajaran ini!
 
-You can go back to the list of [[/list][modules]] to find what to learn next, or continue with the [[javascript:click('.next-page')][next lesson]].
+Anda bisa kembali ke daftar
+[[/list][modul]]
+untuk melihat apa yang bisa dipelajari selanjutnya, atau meneruskan ke
+[[javascript:click(".next-page")][pelajaran selanjutnya]].

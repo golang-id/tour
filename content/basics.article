@@ -1,131 +1,141 @@
-Packages, variables, and functions.
-Learn the basic components of any Go program.
+Paket, variabel, dan fungsi.
+Belajar komponen dasar dari program Go.
 
-The Go Authors
+Para Penggubah Go
 https://golang.org
 
-* Packages
+* Paket
 
-Every Go program is made up of packages.
+Setiap program Go terbuat dari paket-paket (`package`).
 
-Programs start running in package `main`.
+Program mulai berjalan dalam paket `main`.
 
-This program is using the packages with import paths `"fmt"` and `"math/rand"`.
+Program ini menggunakan paket dengan meng-`import` `"fmt"` dan `"math/rand"`.
 
-By convention, the package name is the same as the last element of the import path. For instance, the `"math/rand"` package comprises files that begin with the statement `package`rand`.
+Aturannya, nama paket sama dengan elemen terakhir dari path `import`.
+Sebagai contohnya, paket `"math/rand"` terdiri dari berkas-berkas yang dimulai dengan perintah `package`rand`.
 
-#appengine: *Note:* The environment in which these programs are executed is
-#appengine: deterministic, so each time you run the example program
-#appengine: `rand.Intn` will return the same number.
+#appengine: *Catatan:* Lingkungan di mana program di situs ini berjalan adalah
+#appengine: deterministik, sehingga setiap kali anda mengeksekusi contoh
+#appengine: program `rand.Intn` akan selalu mengembalikan angka yang sama.
 #appengine:
-#appengine: (To see a different number, seed the number generator; see [[https://golang.org/pkg/math/rand/#Seed][`rand.Seed`]].
-#appengine: Time is constant in the playground, so you will need to use something else as the seed.)
+#appengine: (Untuk mendapatkan angka yang acak, tambahkan pembangkit angka;
+#appengine: lihat #appengine: [[https://golang.org/pkg/math/rand/#Seed][`rand.Seed`]] .)
 
 .play basics/packages.go
 
-* Imports
+* Import
 
-This code groups the imports into a parenthesized, "factored" import statement.
+Kode ini mengelompokan `import` di dalam tanda kurung, atau disebut juga perintah `import` yang "difaktorkan".
 
-You can also write multiple import statements, like:
+Anda juga bisa menulis perintah `import`, seperti:
 
 	import "fmt"
 	import "math"
 
-But it is good style to use the factored import statement.
+Tapi lebih baik menggunakan perintah import yang difaktorkan.
 
 .play basics/imports.go
 
-* Exported names
+* Nama-nama yang diekspor
 
-In Go, a name is exported if it begins with a capital letter.
-For example, `Pizza` is an exported name, as is `Pi`, which is exported from
-the `math` package.
+Pada bahasa Go, sebuah nama diekspor jika diawali dengan huruf besar.
+Sebagai contohnya, `Pizza` itu nama yang diekspor, sebagaimana juga `Pi`, yang
+diekspor dari paket `math`.
 
-`pizza` and `pi` do not start with a capital letter, so they are not exported.
+`pizza` dan `pi` tidak diawali dengan huruf besar, maka mereka tidak diekspor. 
 
-When importing a package, you can refer only to its exported names.
-Any "unexported" names are not accessible from outside the package.
+Saat mengimpor sebuah paket, anda hanya bisa mengacu pada nama yang diekspor.
+Setiap nama yang tidak diekspor tidak akan bisa diakses dari luar paket.
 
-Run the code. Notice the error message.
+Jalankan kode disebelah.
+Perhatikan akan adanya pesan kesalahan.
 
-To fix the error, rename `math.pi` to `math.Pi` and try it again.
+Untuk memperbaikinya, ganti nama `math.pi` dengan `math.Pi` dan coba kembali. 
 
 .play basics/exported-names.go
 
-* Functions
+* Fungsi
 
-A function can take zero or more arguments.
+Sebuah fungsi bisa tanpa argumen atau banyak argumen.
 
-In this example, `add` takes two parameters of type `int`.
+Pada contoh ini, `add` memiliki dua parameter dengan tipe `int`.
 
-Notice that the type comes _after_ the variable name.
+Perhatikan bahwa tipe berada _setelah_ nama variabel.
 
-(For more about why types look the way they do, see the [[https://blog.golang.org/gos-declaration-syntax][article on Go's declaration syntax]].)
+(Untuk mengetahui kenapa tipe ditulis seperti itu, lihat
+[[https://blog.golang.org/gos-declaration-syntax][artikel Go tentang deklarasi sintaks]].)
 
 .play basics/functions.go
 
-* Functions continued
+* Fungsi lanjutan
 
-When two or more consecutive named function parameters share a type, you can omit the type from all but the last.
+Saat dua atau lebih parameter fungsi memiliki tipe yang sama, anda bisa menghilangkan semua tipe kecuali yang terakhir.
 
-In this example, we shortened
+Pada contoh ini, kita singkat
 
 	x int, y int
 
-to
+menjadi
 
 	x, y int
 
 .play basics/functions-continued.go
 
-* Multiple results
+* Banyak Kembalian
 
-A function can return any number of results.
+Sebuah fungsi dapat mengeluarkan banyak kembalian.
 
-The `swap` function returns two strings.
+Fungsi `swap` mengembalikan dua `string`.
 
 .play basics/multiple-results.go
 
-* Named return values
+* Kembalian bernama
 
-Go's return values may be named. If so, they are treated as variables defined at the top of the function.
+Nilai kembalian pada Go bisa dinamakan.
+Jika nilai kembalian memiliki nama, mereka diperlakukan seperti variabel yang
+didefinisikan pada fungsi.
 
-These names should be used to document the meaning of the return values.
+Penamaan tersebut seharusnya digunakan untuk mendokumentasikan makna dari
+nilai kembalian.
 
-A `return` statement without arguments returns the named return values. This is known as a "naked" return.
+Sebuah perintah `return` tanpa kembalian mengembalikan nilai sekarang dari
+setiap variabel kembalian.
+Hal ini dikenal dengan kembalian "naked".
 
-Naked return statements should be used only in short functions, as with the example shown here. They can harm readability in longer functions.
+Perintah kembalian "naked" sebaiknya hanya digunakan pada fungsi yang singkat,
+seperti pada contoh di sebelah, karena bisa mengganggu pembacaan kode
+bila digunakan pada fungsi yang panjang.
 
 .play basics/named-results.go
 
-* Variables
+* Variabel
 
-The `var` statement declares a list of variables; as in function argument lists, the type is last.
+Perintah `var` mendeklarasikan daftar variabel; seperti pada daftar argumen pada fungsi, tipenya berada di akhir.
 
-A `var` statement can be at package or function level. We see both in this example.
+Perintah `var` bisa ditulis pada tingkat paket atau fungsi, seperti pada contoh sebelah.
 
 .play basics/variables.go
 
-* Variables with initializers
+* Variabel dengan inisialisasi
 
-A var declaration can include initializers, one per variable.
+Deklarasi sebuah variabel bisa mengikutkan inisialisasi, satu per variabel.
 
-If an initializer is present, the type can be omitted; the variable will take the type of the initializer.
+Jika sebuah inisialisasi ada, maka tipe bisa dihilangkan; variabel akan memiliki tipe dari inisialisasi.
 
 .play basics/variables-with-initializers.go
 
-* Short variable declarations
+* Deklarasi variabel singkat
 
-Inside a function, the `:=` short assignment statement can be used in place of a `var` declaration with implicit type.
+Dalam sebuah fungsi, perintah singkat `:=` bisa digunakan menggantikan `var` dengan tipe implisit.
 
-Outside a function, every statement begins with a keyword (`var`, `func`, and so on) and so the `:=` construct is not available.
+Di luar sebuah fungsi, setiap perintah harus dimulai dengan kata kunci (`var`, `func`, dst), sehingga `:=` tidak bisa digunakan.
 
 .play basics/short-variable-declarations.go
 
-* Basic types
+* Tipe dasar
 
-Go's basic types are
+Tipe dasar pada Go yaitu,
 
 	bool
 
@@ -134,102 +144,103 @@ Go's basic types are
 	int  int8  int16  int32  int64
 	uint uint8 uint16 uint32 uint64 uintptr
 
-	byte // alias for uint8
+	byte // alias untuk uint8
 
-	rune // alias for int32
-	     // represents a Unicode code point
+	rune // alias untuk int32
+	     // merepresentasikan sebuah kode Unicode
 
 	float32 float64
 
 	complex64 complex128
 
-The example shows variables of several types,
-and also that variable declarations may be "factored" into blocks,
-as with import statements.
+Contoh sebelah memperlihatkan variabel dengan beberapa tipe, dan juga deklarasi variabel bisa "difaktorkan" ke dalam blok, seperti pada perintah `import`.
 
-The `int`, `uint`, and `uintptr` types are usually 32 bits wide on 32-bit systems and 64 bits wide on 64-bit systems.
-When you need an integer value you should use `int` unless you have a specific reason to use a sized or unsigned integer type.
+Tipe `int`, `uint`, dan `uintptr` biasanya memiliki panjang 32 bits pada sistem 32-bit dan 64 bits pada sistem 64-bit.
+Saat anda membutuhkan nilai integer anda sebaiknya menggunakan tipe `int` kecuali anda memiliki alasan tertentu menggunakan tipe berukuran khusus atau _unsigned_integer_.
 
 .play basics/basic-types.go
 
-* Zero values
+* Nilai kosong
 
-Variables declared without an explicit initial value are given their
-_zero_value_.
+Variabel yang dideklarasikan tanpa nilai awal diberikan _nilai_kosong_.
 
-The zero value is:
+Nilai kosong adalah:
 
-- `0` for numeric types,
-- `false` for the boolean type, and
-- `""` (the empty string) for strings.
+- `0` untuk tipe numerik,
+- `false` untuk tipe boolean, dan
+- `""` (string kosong) untuk string.
 
 .play basics/zero.go
 
-* Type conversions
+* Konversi Tipe
 
-The expression `T(v)` converts the value `v` to the type `T`.
+Ekspresi `T(v)` mengkonversi nilai `v` ke tipe `T`.
 
-Some numeric conversions:
+Beberapa konversi numerik:
 
 	var i int = 42
 	var f float64 = float64(i)
 	var u uint = uint(f)
 
-Or, put more simply:
+Atau, sederhananya:
 
 	i := 42
 	f := float64(i)
 	u := uint(f)
 
-Unlike in C, in Go assignment between items of different type requires an
-explicit conversion.
-Try removing the `float64` or `uint` conversions in the example and see what happens.
+Tidak seperti C, perintah pengisian nilai pada Go antara item dengan tipe
+berbeda membutuhkan konversi eksplisit.
+Coba hilangkan konversi `float64` atau `int` pada contoh sebelah dan lihat apa
+yang terjadi.
 
 .play basics/type-conversions.go
 
-* Type inference
+* Inferensi tipe
 
-When declaring a variable without specifying an explicit type (either by using the `:=` syntax or `var`=` expression syntax), the variable's type is inferred from the value on the right hand side.
+Saat mendeklarasikan sebuah variabel tanpa menentukan tipe eksplisitnya (baik menggunakan sintaks `:=` atau `var`), tipe variabel disamakan dengan nilai di sebelah kanannya.
 
-When the right hand side of the declaration is typed, the new variable is of that same type:
+Bila sisi kanan dari deklarasi ditulis tipenya, maka variabel baru memiliki tipe yang sama:
 
 	var i int
 	j := i // j is an int
 
-But when the right hand side contains an untyped numeric constant, the new variable may be an `int`, `float64`, or `complex128` depending on the precision of the constant:
+Tapi bila sisi kanan berupa konstanta numerik, variabel baru bisa jadi `int`, `float64`, atau `complex128` bergantung kepada presisi dari konstanta:
 
 	i := 42           // int
 	f := 3.142        // float64
 	g := 0.867 + 0.5i // complex128
 
-Try changing the initial value of `v` in the example code and observe how its type is affected.
+Coba ubah nilai awal dari `v` pada contoh kode dan perhatikan bagaimana tipenya berubah.
 
 .play basics/type-inference.go
 
-* Constants
+* Konstanta
 
-Constants are declared like variables, but with the `const` keyword.
+Konstanta dideklarasikan seperti variabel, tapi dengan kata `const`.
 
-Constants can be character, string, boolean, or numeric values.
+Konstanta bisa bernilai karakter, string, boolean, atau numerik.
 
-Constants cannot be declared using the `:=` syntax.
+Konstanta tidak bisa dideklarasikan dengan sintaks `:=`.
 
 .play basics/constants.go
 
-* Numeric Constants
+* Konstanta Numerik
 
-Numeric constants are high-precision _values_.
+Konstanta numerik adalah _nilai_ dengan presisi-tinggi.
 
-An untyped constant takes the type needed by its context.
+Konstanta yang tidak bertipe menggunakan tipe yang dibutuhkan sesuai dengan konteksnya.
 
-Try printing `needInt(Big)` too.
+Coba cetak juga `needInt(Big)`.
 
 (An `int` can store at maximum a 64-bit integer, and sometimes less.)
 
 .play basics/numeric-constants.go
 
-* Congratulations!
+* Selamat!
 
-You finished this lesson!
+Anda telah menyelesaikan pelajaran ini!
 
-You can go back to the list of [[/list][modules]] to find what to learn next, or continue with the [[javascript:click('.next-page')][next lesson]].
+Anda bisa kembali ke daftar
+[[/list][modul]]
+untuk melihat apa yang bisa dipelajari selanjutnya, atau meneruskan dengan
+[[javascript:click(".next-page")][pelajaran selanjutnya]].

@@ -1,87 +1,103 @@
-Concurrency
-Go provides concurrency constructions as part of the core language. This lesson presents them and gives some examples on how they can be used.
+Konkurensi
+Go menyediakan konstruksi konkurensi sebagai bagian dari inti bahasanya. Pelajaran kali ini menjelaskan dan memberikan beberapa contoh penggunaannya.
 
-The Go Authors
+Para Penggubah Go
 https://golang.org
 
 * Goroutines
 
-A _goroutine_ is a lightweight thread managed by the Go runtime.
+Sebuah _goroutine_ yaitu suatu thread ringan yang diatur oleh Go runtime.
+Perintah
 
 	go f(x, y, z)
 
-starts a new goroutine running
+memulai sebuah goroutine baru `f` dengan menjalankan
 
 	f(x, y, z)
 
-The evaluation of `f`, `x`, `y`, and `z` happens in the current goroutine and the execution of `f` happens in the new goroutine.
+Evaluasi dari nilai `f`, `x`, `y`, dan `z` terjadi di goroutine yang memanggil dan eksekusi dari `f` terjadi di goroutine yang baru.
 
-Goroutines run in the same address space, so access to shared memory must be synchronized. The [[https://golang.org/pkg/sync/][`sync`]] package provides useful primitives, although you won't need them much in Go as there are other primitives. (See the next slide.)
+Goroutine berjalan di ruang alamat yang sama, sehingga akses ke
+_shared_memory_ harus disinkronisasi.
+Paket
+[[https://golang.org/pkg/sync/][`sync`]]
+menyediakan fungsi primitif untuk sinkronisasi, walaupun anda tidak terlalu
+membutuhkannya karena ada fungsi primitif lainnya.
+(Lihat slide selanjutnya.)
 
 .play concurrency/goroutines.go
 
-* Channels
+* Kanal
 
-Channels are a typed conduit through which you can send and receive values with the channel operator, `<-`.
+Kanal adalah sebuah penghubung tipe yang mana anda bisa mengirim dan menerima nilai dengan operator kanal, `<-`.
 
-	ch <- v    // Send v to channel ch.
-	v := <-ch  // Receive from ch, and
-	           // assign value to v.
+	ch <- v    // Kirim v ke kanal ch.
+	v := <-ch  // Terima dari ch, dan simpan nilainya ke v.
 
-(The data flows in the direction of the arrow.)
+(Aliran data sesuai dengan arah panah.)
 
-Like maps and slices, channels must be created before use:
+Seperti map dan slice, kanal harus dibuat sebelum digunakan:
 
 	ch := make(chan int)
 
-By default, sends and receives block until the other side is ready. This allows goroutines to synchronize without explicit locks or condition variables.
+Secara bawaan, pengiriman dan penerimaan ditahan sampai sisi yang lain siap.
+Hal ini membolehkan goroutine untuk melakukan sinkronisasi tanpa melakukan penguncian secara eksplisit atau menggunakan variabel kondisi.
 
 The example code sums the numbers in a slice, distributing the work between two goroutines.
 Once both goroutines have completed their computation, it calculates the final result.
 
 .play concurrency/channels.go
 
-* Buffered Channels
+* Kanal dengan buffer
 
-Channels can be _buffered_.  Provide the buffer length as the second argument to `make` to initialize a buffered channel:
+Kanal memiliki _buffer_.
+Cukup dengan menambahkan panjang buffer ke argumen kedua pada `make` untuk menginisialisasi buffer kanal:
 
 	ch := make(chan int, 100)
 
-Sends to a buffered channel block only when the buffer is full. Receives block when the buffer is empty.
+Pengiriman ke kanal buffer akan ditahan bila buffer telah penuh.
+Penerimaan akan ditahan saat buffer kosong.
 
-Modify the example to overfill the buffer and see what happens.
+Ubahlah contoh untuk memenuhi buffer dan lihat apa yang terjadi.
 
 .play concurrency/buffered-channels.go
 
-* Range and Close
+* "range" dan "close"
 
-A sender can `close` a channel to indicate that no more values will be sent. Receivers can test whether a channel has been closed by assigning a second parameter to the receive expression: after
+Pengirim dapat menutup (`close`) sebuah kanal untuk menandakan bahwa tidak ada lagi data yang dikirim.
+Penerima dapat memeriksa apakah kanal telah ditutup dengan menambahkan parameter kedua pada ekspresi penerimaan:
 
 	v, ok := <-ch
 
-`ok` is `false` if there are no more values to receive and the channel is closed.
+`ok` bernilai `false` jika tidak ada lagi nilai yang diterima dan kanal telah ditutup.
 
-The loop `for`i`:=`range`c` receives values from the channel repeatedly until it is closed.
+Pengulangan `for`i`:=`range`c` menerima nilai dari kanal berulang kali sampai ditutup.
 
-*Note:* Only the sender should close a channel, never the receiver. Sending on a closed channel will cause a panic.
+*Catatan:* Hanya pengirim yang menutup kanal, penerima tidak pernah menutupnya.
+Mengirim ke kanal yang telah tertutup akan menyebabkan kepanikan.
 
-*Another*note:* Channels aren't like files; you don't usually need to close them. Closing is only necessary when the receiver must be told there are no more values coming, such as to terminate a `range` loop.
+*Catatan*lain:* Kanal tidak seperti file; yang mana anda tidak selalu perlu
+menutupnya.
+Penutupan hanya diperlukan saat penerima harus diberitahu bahwa tidak ada lagi
+nilai yang akan diterima, misalnya untuk menghentikan pengulangan pada
+`range`.
 
 .play concurrency/range-and-close.go
 
-* Select
+* Perintah "select"
 
-The `select` statement lets a goroutine wait on multiple communication operations.
+Perintah `select` membuat goroutine menunggu operasi komunikasi.
 
-A `select` blocks until one of its cases can run, then it executes that case.  It chooses one at random if multiple are ready.
+`select` menahan pembacaan sampai salah satu kondisinya dapat berjalan, kemudian ia mengeksekusi kondisi tersebut.
+Ia memilih salah satu kondisi secara acak jika banyak kondisi telah siap.
 
 .play concurrency/select.go
 
-* Default Selection
+* Seleksi bawaan
 
-The `default` case in a `select` is run if no other case is ready.
+Kondisi `default` pada `select` dijalankan jika tidak ada kondisi yang siap.
 
-Use a `default` case to try a send or receive without blocking:
+Gunakan kondisi `default` untuk mencoba mengirim dan menerima tanpa diblok:
 
 	select {
 	case i := <-c:
@@ -92,15 +108,19 @@ Use a `default` case to try a send or receive without blocking:
 
 .play concurrency/default-selection.go
 
-* Exercise: Equivalent Binary Trees
+* Latihan: Binary Tree yang sama
 
-There can be many different binary trees with the same sequence of values stored in it. For example, here are two binary trees storing the sequence 1, 1, 2, 3, 5, 8, 13.
+Ada banyak cara membangun sebuah _binary_tree_ dengan urutan nilai yang sama
+tersimpan di _leave_ nya.
+Sebagai contohnya, berikut dua binary tree yang menyimpan urutan 1, 1, 2, 3,
+5, 8, 13.
 
 .image /content/img/tree.png
 
-A function to check whether two binary trees store the same sequence is quite complex in most languages. We'll use Go's concurrency and channels to write a simple solution.
+Sebuah fungsi yang memeriksa apakah dua binary tree menyimpan urutan yang sama, akan cukup kompleks bila diiimplementasikan pada kebanyakan bahasa pemrograman.
+Kita akan gunakan konkurensi dan kanal untuk menulis sebuah solusi sederhana menggunakan Go.
 
-This example uses the `tree` package, which defines the type:
+Contoh ini menggunakan paket `tree`, yang mendefinisikan tipe:
 
 	type Tree struct {
 		Left  *Tree
@@ -109,27 +129,29 @@ This example uses the `tree` package, which defines the type:
 	}
 
 
-Continue description on [[javascript:click('.next-page')][next page]].
+Lanjutkan deskripsi pada [[javascript:click(".next-page")][halaman selanjutnya]].
 
-* Exercise: Equivalent Binary Trees
+* Latihan: Binary Tree yang sama
 
-*1.* Implement the `Walk` function.
+*1.* Implementasikan fungsi `Walk`.
 
-*2.* Test the `Walk` function.
+*2.* Uji fungsi `Walk`.
 
-The function `tree.New(k)` constructs a randomly-structured (but always sorted) binary tree holding the values `k`, `2k`, `3k`, ..., `10k`.
+Fungsi `tree.New(k)` membuat binary tree yang secara acak-terstuktur (tetapi
+selalu terurut) yang menyimpan nilai `k`, `2k`, `3k`, ..., `10k`.
 
-Create a new channel `ch` and kick off the walker:
+Buat sebuah kanal baru `ch` dan jalankan fungsi `Walk`
 
 	go Walk(tree.New(1), ch)
 
-Then read and print 10 values from the channel. It should be the numbers 1, 2, 3, ..., 10.
+Kemudian baca dan cetak 10 nilai dari kanal.
+Ia harusnya mengeluarkan angka 1, 2, 3, ..., 10.
 
-*3.* Implement the `Same` function using `Walk` to determine whether `t1` and `t2` store the same values.
+*3.* Implementasikan fungsi `Same` menggunakan `Walk` untuk menentukan apakah `t1` dan `t2` menyimpan nilai yang sama.
 
-*4.* Test the `Same` function.
+*4.* Uji fungsi `Same`.
 
-`Same(tree.New(1),`tree.New(1))` should return true, and `Same(tree.New(1),`tree.New(2))` should return false.
+`Same(tree.New(1),`tree.New(1))` mengembalikan nilai `true`, dan `Same(tree.New(1),`tree.New(2))` mengembalikan nilai `false`.
 
 The documentation for `Tree` can be found [[https://godoc.org/golang.org/x/tour/tree#Tree][here]].
 
@@ -137,72 +159,86 @@ The documentation for `Tree` can be found [[https://godoc.org/golang.org/x/tour/
 
 * sync.Mutex
 
-We've seen how channels are great for communication among goroutines.
+Kita telah melihat bagaimana _channel_ sangat bagus untuk komunikasi antara
+beberapa _goroutine_.
 
-But what if we don't need communication? What if we just want to make sure only
-one goroutine can access a variable at a time to avoid conflicts?
+Namun bagaimana jika kita tidak ingin komunikasi?
+Bagaimana jika kita hanya ingin memastikan hanya satu goroutine yang dapat
+mengakses suatu variabel pada satu waktu untuk menghindari konflik?
 
-This concept is called _mutual_exclusion_, and the conventional name for the data structure that provides it is _mutex_.
+Konsep ini disebut juga dengan _mutual_exclusion_, dan nama umum untuk
+struktur data yang menyediakan fungsi tersebut adalah _mutex_.
 
-Go's standard library provides mutual exclusion with
-[[https://golang.org/pkg/sync/#Mutex][`sync.Mutex`]] and its two methods:
+Pustaka standar Go menyediakan mutual exclusion dengan
+[[https://golang.org/pkg/sync/#Mutex][`sync.Mutex`]]
+dan dua fungsinya:
 
 - `Lock`
 - `Unlock`
 
-We can define a block of code to be executed in mutual exclusion by surrounding it
-with a call to `Lock` and `Unlock` as shown on the `Inc` method.
+Kita bisa mendefinisikan sebuah blok kode untuk dieksekusi secara
+_mutual_exclusion_ dengan mengungkungnya dengan pemanggilan fungsi `Lock` dan
+`Unlock` seperti yang terlihat pada method `Inc`.
 
-We can also use `defer` to ensure the mutex will be unlocked as in the `Value` method.
+Kita juga bisa menggunakan `defer` untuk memastikan mutex akan dibuka kembali
+seperti pada method `Value`.
 
-.play concurrency/mutex-counter.go
+* Latihan: Web Crawler
 
-* Exercise: Web Crawler
+Dalam latihan ini anda akan menggunakan fitur konkurensi Go untuk
+mem-paralelkan sebuah _web_crawler_.
 
-In this exercise you'll use Go's concurrency features to parallelize a web crawler.
+Ubah fungsi `Crawl` untuk mengambil URL secara paralel tanpa ada duplikasi
+(mengambil URL yang sama dua kali).
 
-Modify the `Crawl` function to fetch URLs in parallel without fetching the same URL twice.
-
-_Hint_: you can keep a cache of the URLs that have been fetched on a map, but maps alone are not
-safe for concurrent use!
+_Petunjuk_: anda bisa menyimpan _cache_ dari URL yang telah diambil
+menggunakan sebuah map, tapi map tidak aman untuk digunakan secara konkuren!
 
 .play concurrency/exercise-web-crawler.go
 
-* Where to Go from here...
+* Kemana selanjutnya ...
 
-#appengine: You can get started by
-#appengine: [[https://golang.org/dl/][installing Go]].
+#appengine: Anda dapat memulai dengan
+#appengine: [[https://golang.org/doc/install/][memasang Go]].
 
-#appengine: Once you have Go installed, the
-The
-[[https://golang.org/doc/][Go Documentation]] is a great place to
-#appengine: continue.
-start.
-It contains references, tutorials, videos, and more.
+#appengine: Saat anda telah memasang Go,
+[[https://golang.org/doc/][Dokumentasi Go]]
+adalah tempat yang bagus untuk
+#appengine: melanjutkan.
+memulai.
+Dokumentasi tersebut berisi referensi, tutorial, video, dan banyak lagi.
 
-To learn how to organize and work with Go code, watch [[https://www.youtube.com/watch?v=XCsL89YtqCs][this screencast]] or read [[https://golang.org/doc/code.html][How to Write Go Code]].
+Untuk belajar cara mengorganisir dan bekerja dengan kode Go, lihat 
+[[https://www.youtube.com/watch?v=XCsL89YtqCs][siaran berikut]]
+atau baca
+[[https://golang.org/doc/code.html][Cara Menulis Kode Go]].
 
-If you need help with the standard library, see the [[https://golang.org/pkg/][package reference]]. For help with the language itself, you might be surprised to find the [[https://golang.org/ref/spec][Language Spec]] is quite readable.
+Jika anda membutuhkan bantuan dengan pustaka Go, lihat 
+[[https://golang.org/pkg/][referensi paket]].
+Untuk bantuan mengenai bahasa itu sendiri, anda mungkin bisa melihat
+[[https://golang.org/ref/spec][Spesifikasi Bahasa]]
+cukup dapat bisa dibaca.
 
-To further explore Go's concurrency model, watch
-[[https://www.youtube.com/watch?v=f6kdp27TYZs][Go Concurrency Patterns]]
-([[https://talks.golang.org/2012/concurrency.slide][slides]])
-and
-[[https://www.youtube.com/watch?v=QDDwwePbDtw][Advanced Go Concurrency Patterns]]
+Untuk mengeksplorasi lebih lanjut tentang model konkurensi dari Go, tontonlah
+[[https://www.youtube.com/watch?v=f6kdp27TYZs][Pola Konkurensi]]
+([[https://talks.golang.org/2012/concurrency.slide][slide]])
+dan
+[[https://www.youtube.com/watch?v=QDDwwePbDtw][Pola Konkurensi Go Lanjutan]]
 ([[https://talks.golang.org/2013/advconc.slide][slides]])
-and read the
-[[https://golang.org/doc/codewalk/sharemem/][Share Memory by Communicating]]
-codewalk.
+dan baca
+[[https://golang.org/doc/codewalk/sharemem/][Berbagi Memory dengan Komunikasi]].
 
-To get started writing web applications, watch
+Untuk memulai membuat aplikasi web, tontonlah
 [[https://vimeo.com/53221558][A simple programming environment]]
 ([[https://talks.golang.org/2012/simple.slide][slides]])
-and read the
-[[https://golang.org/doc/articles/wiki/][Writing Web Applications]] tutorial.
+dan baca tutorial
+[[https://golang.org/doc/articles/wiki/][Menulis Aplikasi Web]].
 
-The [[https://golang.org/doc/codewalk/functions/][First Class Functions in Go]] codewalk gives an interesting perspective on Go's function types.
+Artikel
+[[https://golang.org/doc/codewalk/functions/][First Class Functions in Go]]
+memberikan perspektif menarik tentang tipe fungsi pada Go.
 
-The [[https://blog.golang.org/][Go Blog]] has a large archive of informative Go articles.
+[[https://blog.golang.org/][Blognya Go]]
+memiliki sejumlah arsip artikel informatif tentang Go.
 
-Visit [[https://golang.org][golang.org]] for more.
-
+Kunjungi [[https://golang.org][golang.org]] untuk lebih lanjut.
