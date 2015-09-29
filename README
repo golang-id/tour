@@ -1,0 +1,19 @@
+Ini adalah aplikasi Tur Go, sebuah pendahuluan tentang bahasa Pemrograman Go.
+
+Versi mayanya bisa dilihat di http://go-tour-id2.appspot.com.
+, yang diperbarui paling lambat tujuh hari sekali bergantung kepada perubahan
+di cabang `master` (yang berbahasa Inggris).
+
+Untuk memasang tur ini secara lokal, pertama pasang Go, kemudian jalankan
+
+	$ go get golang.org/x/tour/gotour
+	$ cd $GOPATH/bin
+	$ ./gotour
+
+Kecuali bila ada catatan tambahan, berkas sumber didistribusikan dengan gaya 
+lisensi BSD yang bisa dibaca di berkas LICENSE.
+
+Untuk berkontribusi dalam repositori ini silahkan kirim permintaan *pull* atau
+tambahkan di bagian isu [1].
+
+[1] https://github.com/shuLhan/tour/issues.
