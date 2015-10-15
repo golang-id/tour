@@ -22,11 +22,9 @@ Selama tur ini anda akan menemukan sekumpulan slide dan latihan untuk anda kerja
 
 Anda bisa menavigasinya lewat
 
-- [[javascript:highlight(".prev-page")]["sebelum"]]
-atau `PageUp` untuk kembali ke halaman sebelumnya,
+- [[javascript:highlight(".prev-page")]["sebelum"]] atau `PageUp` untuk kembali ke halaman sebelumnya,
 
-- [[javascript:highlight(".next-page")]["selanjutnya"]]
-atau `PageDown` untuk ke halaman selanjutnya.
+- [[javascript:highlight(".next-page")]["selanjutnya"]] atau `PageDown` untuk ke halaman selanjutnya.
 
 Tur ini interaktif. Klik pada tombol
 [[javascript:highlightAndClick("#run")][Jalankan]]
@@ -34,7 +32,7 @@ sekarang (atau tekan `Shift` + `Enter`) untuk mengkompilasi dan menjalankan
 program pada
 #appengine: server.
 komputer anda.
-Hasilnya ditampilkan di bawah kode.
+Hasilnya akan ditampilkan di bawah kode.
 
 Contoh program tersebut menampilkan aspek dari Go.
 Program yang ada di tur ditujukan sebagai titik awal bagi eksperimen anda.
@@ -100,11 +98,11 @@ atau tekan `PageDown` untuk melanjutkan.
 #appengine:
 #appengine: Program `tour` akan membuka peramban web yang menampilkan versi
 #appengine: lokal dari tur.
-#appengine:
+#appengine: 
 #appengine: Atau, tentu saja, anda bisa melanjutkan tur di situs ini.
 
 #appengine: * Go Playground
-#appengine:
+#appengine: 
 #appengine: Tur ini dibuat dengan
 #appengine: [[https://play.golang.org/][Go Playground]]
 #appengine: , sebuah layanan web yang berjalan di atas server

@@ -18,9 +18,11 @@ Sebagai contohnya, paket `"math/rand"` terdiri dari berkas-berkas yang dimulai d
 #appengine: *Catatan:* Lingkungan di mana program di situs ini berjalan adalah
 #appengine: deterministik, sehingga setiap kali anda mengeksekusi contoh
 #appengine: program `rand.Intn` akan selalu mengembalikan angka yang sama.
-#appengine:
+#appengine: 
 #appengine: (Untuk mendapatkan angka yang acak, tambahkan pembangkit angka;
-#appengine: lihat #appengine: [[https://golang.org/pkg/math/rand/#Seed][`rand.Seed`]] .)
+#appengine: lihat
+#appengine: [[https://golang.org/pkg/math/rand/#Seed][`rand.Seed`]]
+#appengine: .)
 
 .play basics/packages.go
 
