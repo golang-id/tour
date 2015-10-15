@@ -412,7 +412,7 @@ Buatlah ia menjadi `io.Reader` dengan mengimplementasikan method `Read`.
 
 * Gambar
 
-[[http://golang.org/pkg/image/#Image][Paket image]]
+[[https://golang.org/pkg/image/#Image][Paket image]]
 mendefinisikan interface `Image`:
 
 	package image
