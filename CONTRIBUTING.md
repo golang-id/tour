@@ -38,6 +38,10 @@ The App Engine version runs code examples against the service at play.golang.org
 To verify changes to the code examples you must use your local toolchain to compile
 and run `gotour` locally.
 
+The App Engine version runs code examples against the service at play.golang.org.
+To verify changes to the code examples you must use your local toolchain to compile
+and run `gotour` locally.
+
 ## Contributing code
 
 Please read the [Contribution Guidelines](https://golang.org/doc/contribute.html)
