@@ -6,7 +6,7 @@ https://golang.org
 
 * Pengulangan ("for")
 
-Go hanya memiliki satu konstruk pengulangan, yaitu `for`.
+Go hanya memiliki satu perintah pengulangan yaitu `for`.
 
 Dasar dari pengulangan `for` yaitu memiliki tiga komponen yang dipisahkan oleh
 titik-koma:
@@ -32,15 +32,20 @@ Perintah awal dan akhir adalah opsional.
 
 .play flowcontrol/for-continued.go
 
-* For adalah Go-nya "while"
+* Perintah for adalah "while"-nya Go
 
-Dengan cara ini anda bisa menghilangkan titik-koma: `while` nya C dieja dengan `for` pada Go.
+Dengan cara ini anda bisa menghilangkan perintah awal dan akhir, menggunakan
+hanya ekpresi kondisi sehingga `for` menjadi seperti `while` pada bahasa C.
 
 .play flowcontrol/for-is-gos-while.go
 
 * Pengulangan selamanya
 
-Jika anda mengosongkan kondisi maka pengulangan akan berjalan selamanya, dengan ini pengulangan tanpa henti dapat diekspresikan dengan singkat.
+Jika anda mengosongkan kondisi maka pengulangan akan berjalan selamanya, dengan
+ini pengulangan tanpa henti dapat diekspresikan dengan singkat.
+
+Untuk keluar dari pengulangan anda bisa menggunakan perintah `break` atau
+`return` bergantung kepada kondisi yang dibutuhkan pada program.
 
 .play flowcontrol/forever.go
 
