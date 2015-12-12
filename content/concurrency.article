@@ -183,6 +183,8 @@ _mutual_exclusion_ dengan mengungkungnya dengan pemanggilan fungsi `Lock` dan
 Kita juga bisa menggunakan `defer` untuk memastikan mutex akan dibuka kembali
 seperti pada method `Value`.
 
+.play concurrency/mutex-counter.go
+
 * Latihan: Web Crawler
 
 Dalam latihan ini anda akan menggunakan fitur konkurensi Go untuk
@@ -193,6 +195,9 @@ Ubah fungsi `Crawl` untuk mengambil URL secara paralel tanpa ada duplikasi
 
 _Petunjuk_: anda bisa menyimpan _cache_ dari URL yang telah diambil
 menggunakan sebuah map, tapi map tidak aman untuk digunakan secara konkuren!
+
+_Petunjuk_: anda bisa menyimpan _cache_ dari URL yang telah diambil menggunakan
+sebuah `map`, tapi `map` tidak aman untuk digunakan secara konkuren!
 
 .play concurrency/exercise-web-crawler.go
 
