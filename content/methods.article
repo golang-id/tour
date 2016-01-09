@@ -29,7 +29,7 @@ fungsionalitas.
 
 * Method lanjutan
 
-Anda bisa mendeklarasikan method pada tipe selain struct just.
+Anda bisa mendeklarasikan method pada tipe selain `struct` juga.
 
 Pada contoh berikut kita dapat melihat sebuah tipe numerik `MyFloat` dengan
 method `Abs`.
@@ -41,7 +41,7 @@ didefinisikan dipaket yang lain (termasuk tipe dasar seperti `int`).
 
 .play methods/methods-continued.go
 
-* Method dengan pointer-receiver
+* Pointer-receiver
 
 Anda bisa mendeklarasikan method dengan _receiver_ berupa pointer.
 
@@ -52,9 +52,9 @@ Hal ini berarti tipe _receiver_ memiliki sintaks `*T` untuk tipe `T`.
 Sebagai contohnya, method `Scale` didefinisikan pada `*Vertex`.
 
 Method dengan pointer-receiver dapat mengubah nilai yang diacu oleh receiver
-(tidak seperti `Scale`).
-Karena method seringkali perlu mengubah receiver-nya, pointer-receiver lebih
-umum ditemukan daripada receiver yang bukan pointer.
+(seperti yang dilakukan oleh `Scale`).
+Karena method seringkali perlu mengubah receiver-nya, _pointer-receiver_ lebih
+umum ditemukan daripada _receiver_ yang bukan pointer.
 
 Coba hapus `*` dari deklarasi fungsi `Scale` pada baris 16 dan perhatikan
 bagaimana perilaku program berubah.
