@@ -4,11 +4,12 @@ Versi mayanya bisa dilihat di http://go-tour-id2.appspot.com, yang diperbarui
 paling lambat tujuh hari sekali bergantung kepada perubahan di cabang `master`
 (yang berbahasa Inggris).
 
-Untuk memasang tur ini secara lokal, pertama pasang Go, kemudian jalankan
+Untuk memasang tur ini secara lokal, pertama pasang Go, kedua pasang Go
+Application Engine, kemudian jalankan dengan cara,
 
-	$ go get golang.org/x/tour/gotour
-	$ cd $GOPATH/bin
-	$ ./gotour
+	$ go get github.com/shuLhan/go-tour-id
+	$ cd $GOPATH/work/src/github.com/shuLhan/go-tour-id
+	$ ./goapp
 
 Kecuali bila ada catatan tambahan, berkas sumber didistribusikan dengan
 lisensi BSD yang bisa dibaca di berkas LICENSE.
