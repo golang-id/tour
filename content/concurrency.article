@@ -153,7 +153,8 @@ Ia harusnya mengeluarkan angka 1, 2, 3, ..., 10.
 
 `Same(tree.New(1),`tree.New(1))` mengembalikan nilai `true`, dan `Same(tree.New(1),`tree.New(2))` mengembalikan nilai `false`.
 
-The documentation for `Tree` can be found [[https://godoc.org/golang.org/x/tour/tree#Tree][here]].
+Dokumentasi untuk `Tree` bisa ditemukan
+[[https://godoc.org/golang.org/x/tour/tree#Tree][di sini]].
 
 .play concurrency/exercise-equivalent-binary-trees.go
 

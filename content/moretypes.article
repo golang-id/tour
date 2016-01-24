@@ -375,7 +375,7 @@ Mari bermain dengan fungsi.
 
 Implementasikan sebuah fungsi `fibonacci` yang mengembalikan sebuah fungsi
 (closure) yang mengembalikan
-[[https://en.wikipedia.org/wiki/Fibonacci_number][bilangan fibonacci]]
+[[https://id.wikipedia.org/wiki/Bilangan_Fibonacci][bilangan fibonacci]]
 (0, 1, 1, 2, 3, 5, ...).
 
 .play moretypes/exercise-fibonacci-closure.go
