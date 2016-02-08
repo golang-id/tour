@@ -43,8 +43,9 @@ Seperti map dan slice, kanal harus dibuat sebelum digunakan:
 Secara bawaan, pengiriman dan penerimaan ditahan sampai sisi yang lain siap.
 Hal ini membolehkan goroutine untuk melakukan sinkronisasi tanpa melakukan penguncian secara eksplisit atau menggunakan variabel kondisi.
 
-The example code sums the numbers in a slice, distributing the work between two goroutines.
-Once both goroutines have completed their computation, it calculates the final result.
+Contoh kode menjumlahkan angka yang ada di `slice`, dengan mendistribusikan
+kerja antara dua goroutine.
+Saat kedua goroutine selesai, hasil akhirnya kemudian akan dihitung.
 
 .play concurrency/channels.go
 
