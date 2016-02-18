@@ -11,10 +11,10 @@ func main() {
 	t := time.Now()
 	switch {
 	case t.Hour() < 12:
-		fmt.Println("Good morning!")
+		fmt.Println("Selamat pagi!")
 	case t.Hour() < 17:
-		fmt.Println("Good afternoon.")
+		fmt.Println("Selamat sore.")
 	default:
-		fmt.Println("Good evening.")
+		fmt.Println("Selamat malam.")
 	}
 }

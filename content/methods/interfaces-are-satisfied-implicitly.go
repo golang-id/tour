@@ -12,8 +12,8 @@ type T struct {
 	S string
 }
 
-// This method means type T implements the interface I,
-// but we don't need to explicitly declare that it does so.
+// Method berikut berarti type T mengimplementasikan interface I,
+// tapi kita tidak perlu secara eksplisit mendeklarasikannya.
 func (t T) M() {
 	fmt.Println(t.S)
 }

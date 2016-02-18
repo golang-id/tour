@@ -8,15 +8,15 @@ func main() {
 	var s []int
 	printSlice(s)
 
-	// append works on nil slices.
+	// append bekerja pada slice yang nil.
 	s = append(s, 0)
 	printSlice(s)
 
-	// The slice grows as needed.
+	// Slice bertambah seperlunya.
 	s = append(s, 1)
 	printSlice(s)
 
-	// We can add more than one element at a time.
+	// Kita juga bisa menambahkan lebih dari satu elemen sekaligus.
 	s = append(s, 2, 3, 4)
 	printSlice(s)
 }
