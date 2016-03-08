@@ -49,6 +49,11 @@ sebuah struct `p`, kita dapat menulisnya dengan `(*p).X`.
 Namun, notasi tersebut tidak praktis, sehingga bahasa Go membolehkan kita
 mengaksesnya langsung dengan menulis hanya `p.X`.
 
+Untuk mengakses bagian `X` dari sebuah struct, jika pointer `p` menunjuk ke
+sebuah struct, kita dapat mengaksesnya dengan menulis `(*p).X`.
+Namun, notasi seperti ini sangat menyulitkan, maka bahasa Go membolehkan untuk
+mengaksesnya langsung dengan `p.X` tanpa membutuhkan penunjukan ulang.
+
 .play moretypes/struct-pointers.go
 
 * Inisialisasi struct
