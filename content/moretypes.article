@@ -91,7 +91,7 @@ Sebuah slice ukurannya bisa dinamis, bisa mengacu secara fleksibel ke elemen
 dalam sebuah array.
 Dalam praktiknya, slice lebih sering digunakan daripada array.
 
-Type `[]T` adalah sebuah slice dengan elemen bertipe `T`.
+Tipe `[]T` adalah sebuah slice dengan elemen bertipe `T`.
 
 Sebuah slice dibentuk dengan menspesifikasikan dua indeks, batas bawah dan
 batas atas, dipisahkan oleh sebuah tanda titik-dua:

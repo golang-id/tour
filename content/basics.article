@@ -10,7 +10,7 @@ Setiap program Go terbuat dari paket-paket (`package`).
 
 Program mulai berjalan dalam paket `main`.
 
-Program ini menggunakan paket dengan meng-`import` `"fmt"` dan `"math/rand"`.
+Program ini menggunakan paket dengan meng- `import` `"fmt"` dan `"math/rand"`.
 
 Aturannya, nama paket sama dengan elemen terakhir dari path `import`.
 Sebagai contohnya, paket `"math/rand"` terdiri dari berkas-berkas yang dimulai dengan perintah `package`rand`.
@@ -35,25 +35,25 @@ Anda juga bisa menulis perintah `import`, seperti:
 	import "fmt"
 	import "math"
 
-Tapi lebih baik menggunakan perintah import yang difaktorkan.
+Tapi lebih disarankan untuk menggunakan perintah `import` yang difaktorkan.
 
 .play basics/imports.go
 
 * Nama-nama yang diekspor
 
-Pada bahasa Go, sebuah nama diekspor jika diawali dengan huruf besar.
+Pada Go, sebuah nama diekspor jika ia diawali dengan huruf besar.
 Sebagai contohnya, `Pizza` itu nama yang diekspor, sebagaimana juga `Pi`, yang
 diekspor dari paket `math`.
 
-`pizza` dan `pi` tidak diawali dengan huruf besar, maka mereka tidak diekspor. 
+`pizza` dan `pi` tidak diawali dengan huruf besar, maka mereka tidak diekspor.
 
 Saat mengimpor sebuah paket, anda hanya bisa mengacu pada nama yang diekspor.
 Setiap nama yang tidak diekspor tidak akan bisa diakses dari luar paket.
 
-Jalankan kode disebelah.
+Jalankan kode di sebelah.
 Perhatikan akan adanya pesan kesalahan.
 
-Untuk memperbaikinya, ganti nama `math.pi` dengan `math.Pi` dan coba kembali. 
+Untuk memperbaikinya, ganti nama `math.pi` dengan `math.Pi` dan coba kembali.
 
 .play basics/exported-names.go
 
