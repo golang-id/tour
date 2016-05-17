@@ -8,8 +8,8 @@ Untuk memasang tur ini secara lokal, pertama pasang Go, kedua pasang Go
 Application Engine, kemudian jalankan dengan cara,
 
 	$ go get github.com/shuLhan/go-tour-id
-	$ cd $GOPATH/work/src/github.com/shuLhan/go-tour-id
-	$ ./goapp
+	$ cd $GOPATH/src/github.com/shuLhan/go-tour-id
+	$ goapp serve
 
 Kecuali bila ada catatan tambahan, berkas sumber didistribusikan dengan
 lisensi BSD yang bisa dibaca di berkas LICENSE.
@@ -17,4 +17,4 @@ lisensi BSD yang bisa dibaca di berkas LICENSE.
 Untuk berkontribusi dalam repositori ini silahkan kirim permintaan *pull* atau
 tambahkan di bagian isu [1].
 
-[1] https://github.com/shuLhan/tour/issues.
+[1] https://github.com/shuLhan/go-tour-id/issues.
