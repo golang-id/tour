@@ -9,15 +9,15 @@ https://golang.org
 Selamat datang di tur
 [[https://golang.org/][bahasa pemrograman Go]].
 
-Tur ini dibagi menjadi beberapa modul yang dapat anda akses dengan mengklik pada
-[[javascript:highlight(".logo")][Tur Go]]
-di bagian kiri atas halaman.
+Tur ini dibagi menjadi beberapa modul yang dapat anda akses dengan mengeklik
+pada [[javascript:highlight(".logo")][Tur Go]] di bagian kiri atas halaman.
 
-Anda juga dapat setiap saat melihat daftar isi dengan mengklik pada
+Anda juga dapat setiap saat melihat daftar isi dengan mengeklik pada
 [[javascript:highlightAndClick(".nav")][menu]]
 di kanan atas halaman.
 
-Selama tur ini anda akan menemukan sekumpulan slide dan latihan untuk anda kerjakan.
+Selama tur ini anda akan menemukan sekumpulan slide dan latihan untuk anda
+kerjakan.
 
 Anda bisa menavigasinya lewat
 
@@ -31,7 +31,7 @@ sekarang (atau tekan `Shift` + `Enter`) untuk mengkompilasi dan menjalankan
 program pada
 #appengine: server.
 komputer anda.
-Hasilnya akan ditampilkan di bawah kode.
+Hasilnya akan ditampilkan di kanan bawah.
 
 Contoh program tersebut menampilkan aspek dari Go.
 Program yang ada di tur ditujukan sebagai titik awal bagi eksperimen anda.
@@ -45,8 +45,8 @@ Saat anda mengklik pada tombol
 Anda bisa menghidup atau mematikan sintaks dengan mengklik pada tombol
 [[javascript:highlightAndClick(".syntax-checkbox")][sintaks]]
 
-Anda bisa mengaktifkan pewarnaan sintaks dengan mengklik pada tombol
-[[javascript:highlightAndClick(".syntax-checkbox"][sintaks]].
+Anda bisa mengaktifkan pewarnaan sintaks dengan mengeklik pada tombol
+[[javascript:highlightAndClick(".syntax-checkbox")][sintaks]].
 
 Saat anda selesai, klik
 [[javascript:highlightAndClick(".next-page")][panah kanan]]
@@ -134,4 +134,7 @@ atau tekan `PageDown` untuk melanjutkan.
 
 Anda telah menyelesaikan modul pertama dari tur!
 
-Sekarang klik pada [[javascript:highlightAndClick(".logo")][Sebuah Tur dari Go]] untuk menemukan apa saja yang dapat anda pelajari tentang Go, atau langsung ke [[javascript:click(".next-page")][pelajaran selanjutnya]].
+Sekarang klik pada
+[[javascript:highlightAndClick(".logo")][Tur Bahasa Pemrograman Go]]
+untuk menemukan apa saja yang dapat anda pelajari tentang Go, atau langsung ke
+[[javascript:click(".next-page")][pelajaran selanjutnya]].
