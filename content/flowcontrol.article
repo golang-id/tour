@@ -58,11 +58,13 @@ ditutupi dengan tanda-kurung `(`)` namun tanda `{`}` diharuskan.
 
 * Kondisi "if" singkat
 
-Seperti pada `for`, perintah `if` bisa diawali dengan perintah singkat untuk dieksekusi sebelum kondisi.
+Seperti pada perintah `for`, perintah `if` bisa diawali dengan perintah
+singkat untuk dieksekusi sebelum kondisi.
 
-Variabel yang dideklarasikan pada perintah singkat tersebut hanya berlaku sampai lingkup sampai kondisi `if` berakhir.
+Variabel yang dideklarasikan pada perintah singkat tersebut hanya berlaku
+sampai lingkup kondisi `if` berakhir.
 
-(Coba gunakan `v` di akhir perintah `return`.)
+(Coba gunakan `v` di akhir perintah `return`, dan jalankan)
 
 .play flowcontrol/if-with-a-short-statement.go
 
@@ -71,8 +73,8 @@ Variabel yang dideklarasikan pada perintah singkat tersebut hanya berlaku sampai
 Variabel yang dideklarasikan dalam perintah singkat `if` juga dapat digunakan
 dalam blok `else`.
 
-(Kedua pemanggilan ke `pow` dieksekusi dan dikembalikan sebelum pemanggilan ke
- `fmt.Println` di `main` dimulai.)
+(Pada contoh, kedua pemanggilan terhadap fungsi `pow` dieksekusi sebelum
+`main` memanggil `fmt.Println`.)
 
 .play flowcontrol/if-and-else.go
 
@@ -156,8 +158,8 @@ Sebagai contoh,
 tidak akan memanggil fungsi `f` jika `i==0`.
 
 #appengine: *Catatan:* waktu dalam Go playground selalu berawal dari
-#appengine: 2009-11-10 23:00:00 UTC, sebuah nilai yang makna bisa dicari oleh
-#appengine: pembaca.
+#appengine: 2009-11-10 23:00:00 UTC, sebuah nilai yang maknanya bisa dicari
+#appengine: oleh pembaca.
 
 .play flowcontrol/switch-evaluation-order.go
 
@@ -165,8 +167,8 @@ tidak akan memanggil fungsi `f` jika `i==0`.
 
 Perintah `switch` tanpa sebuah kondisi sama seperti `switch`true`.
 
-Konstruksi ini merupakan cara yang bersih untuk menulis rantaian if-then-else
-yang panjang.
+Konstruksi ini merupakan cara yang bersih untuk menulis rantaian
+`if-then-else` yang panjang.
 
 .play flowcontrol/switch-with-no-condition.go
 

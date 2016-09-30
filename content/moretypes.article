@@ -7,10 +7,10 @@ https://golang.org
 * Pointer
 
 Go memiliki pointer.
-Sebuah pointer menyimpan alamat dari sebuah variabel.
+Sebuah pointer menyimpan alamat dari sebuah nilai.
 
 Tipe `*T` adalah pointer ke sebuah nilai `T`.
-Nilai kosongnya adalah `nil`.
+Nilai kosong dari pointer adalah `nil`.
 
 	var p *int
 
