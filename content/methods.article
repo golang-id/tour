@@ -76,7 +76,7 @@ Bisakah anda melihat perubahan perilakunya?
 Apa yang harus anda ubah selanjutnya supaya contoh tersebut dapat di
 _compile_?
 
-(Jika anda tidak yakin, lanjutkan ke tahap berikutnya.) 
+(Jika anda tidak yakin, lanjutkan ke tahap berikutnya.)
 
 .play methods/methods-pointers-explained.go
 
