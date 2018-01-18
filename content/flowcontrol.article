@@ -109,19 +109,18 @@ gunakan sintaks floating point atau konversi:
 Selanjutnya, ubah kondisi pengulangan untuk berhenti saat nilainya sudah tidak
 berubah lagi (atau hanya berubah dengan delta yang sangat kecil).
 Lihat apakah iterasinya lebih sedikit atau lebih banyak dari 10 iterasi.
-Coba nilai terkaan awal untuk z, misalnya x, atau x/2.
+Coba ganti nilai terkaan awal untuk z, misalnya x, atau x/2.
 Seberapa dekat hasil anda dengan nilai
-[[https://golang.org/pkg/math/#Sqrt][math.Sqrt]] 
+[[https://golang.org/pkg/math/#Sqrt][`math.Sqrt`]]
 dari pustaka standar?
 
-(*Catatan:* Jika anda tertarik dengan rincian dari algoritma, persamaan z² − x
+*Catatan:* Jika anda tertarik dengan rincian dari algoritma, persamaan z² − x
 adalah seberapa jauh nilai z² dari yang diinginkan (x), dan pembagian dengan
-(2*z) adalah turunan dari z², untuk melihat berapa banyak kita harus
-memperbaiki nilai z dengan melihat berapa cepat z² berubah.
+(2*z) adalah turunan dari z², untuk melihat berapa banyak kita harus memperbaiki
+nilai z dengan melihat berapa cepat z² berubah.
 Pendekatan ini disebut dengan
-[[https://en.wikipedia.org/wiki/Newton%27s_method][metode Newton]].
-Ia bekerja dengan baik untuk beragam fungsi,
-terutama kuadrat.
+[[https://id.wikipedia.org/wiki/Metode_Newton][metode Newton]].
+Ia bekerja dengan baik untuk beragam fungsi, terutama kuadrat.
 
 .play flowcontrol/exercise-loops-and-functions.go
 
