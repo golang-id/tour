@@ -528,3 +528,14 @@ a#run, a#kill {
         display: none;
     }
 }
+@media (max-width: 960px) {
+    #explorer {
+        position: initial;
+        height: auto;
+    }
+    #explorer .imports-checkbox,
+    #explorer .syntax-checkbox {
+        float: none;
+        display: block;
+    }
+}
