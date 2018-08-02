@@ -13,7 +13,7 @@ dengan perintah,
 Untuk memasang dari sumbernya langsung, pertama persiapkan [ruang kerja
 untuk Go](https://golang.org/doc/code.html), kemudian jalankan perintah,
 
-	$ go get github.com/shuLhan/go-tour-id
+	$ go get github.com/Go-ID-community/go-tour-id
 
 Perintah tersebut akan membuat aplikasi `gotour` di direktori `bin` di ruang
 kerja anda.
@@ -24,4 +24,4 @@ lisensi BSD yang bisa dibaca di berkas LICENSE.
 Untuk berkontribusi dalam repositori ini silahkan kirim permintaan *pull* atau
 tambahkan di bagian isu [1].
 
-[1] https://github.com/shuLhan/go-tour-id/issues.
+[1] https://github.com/Go-ID-community/go-tour-id/issues.

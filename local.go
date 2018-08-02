@@ -24,9 +24,9 @@ import (
 	"golang.org/x/tools/playground/socket"
 
 	// Imports so that go build/install automatically installs them.
-	_ "github.com/shuLhan/go-tour-id/pic"
-	_ "github.com/shuLhan/go-tour-id/tree"
-	_ "github.com/shuLhan/go-tour-id/wc"
+	_ "github.com/Go-ID-community/go-tour-id/pic"
+	_ "github.com/Go-ID-community/go-tour-id/tree"
+	_ "github.com/Go-ID-community/go-tour-id/wc"
 )
 
 const (

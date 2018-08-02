@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package reader // import "github.com/shuLhan/go-tour-id/reader"
+package reader // import "github.com/Go-ID-community/go-tour-id/reader"
 
 import (
 	"fmt"
