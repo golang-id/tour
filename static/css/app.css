@@ -411,6 +411,7 @@ a#run, a#kill {
     }
     #left-side {
         background: #e0ebf5;
+        padding-top: 120px;
     }
     #right-side {
         padding-top: 48px;
