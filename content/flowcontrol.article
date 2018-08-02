@@ -22,7 +22,7 @@ Pengulangan akan berhenti saat ekspresi kondisi bernilai `false`.
 
 *Catatan:* Tidak seperti bahasa C, Java, atau JavaScript, tidak ada tanda
 kurung yang digunakan menutupi ketiga komponen dari perintah `for` dan tanda
-kurung kurawal `{`}` selalu dibutuhkan..
+kurung kurawal `{`}` selalu dibutuhkan.
 
 .play flowcontrol/for.go
 

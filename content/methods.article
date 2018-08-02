@@ -34,10 +34,10 @@ Anda bisa mendeklarasikan method pada tipe selain `struct` juga.
 Pada contoh berikut kita dapat melihat sebuah tipe numerik `MyFloat` dengan
 method `Abs`.
 
-Anda hanya bisa mendeklerasikan sebuah method dengan sebuah receiver yang
+Anda hanya bisa mendeklarasikan sebuah method dengan sebuah receiver yang
 tipenya didefinisikan di paket yang sama dengan method-nya.
 Anda tidak bisa mendeklarasikan sebuah method dengan receiver yang tipenya
-didefinisikan dipaket yang lain (termasuk tipe dasar seperti `int`).
+didefinisikan di paket yang lain (termasuk tipe dasar seperti `int`).
 
 .play methods/methods-continued.go
 
@@ -74,9 +74,9 @@ Di sini kita lihat method `Abs` dan `Scale` dibuat ulang sebagai fungsi.
 Sekali lagi, coba hilangkan `*` pada baris 16.
 Bisakah anda melihat perubahan perilakunya?
 Apa yang harus anda ubah selanjutnya supaya contoh tersebut dapat di
-_compile_?
+kompilasi?
 
-(Jika anda tidak yakin, lanjutkan ke tahap berikutnya.)
+(Jika anda tidak yakin, lanjutkan ke halaman berikutnya.)
 
 .play methods/methods-pointers-explained.go
 
@@ -128,7 +128,7 @@ Pada kasus ini, pemanggilan method `p.Abs()` diinterpretasikan sebagai
 
 .play methods/indirection-values.go
 
-* Memilih receiver nilai atau pointer
+* Memilih receiver sebagai nilai atau pointer
 
 Ada dua alasan kenapa menggunakan _pointer-receiver_.
 
@@ -237,7 +237,7 @@ konkritnya.
 Perintah di atas menegaskan bahwa isi interface `i` menyimpan tipe konkrit `T`
 dan memberikan nilai `T` ke variabel `t`.
 
-Jika `i tidak mengandung tipe `T`, perintah tersebut akan memicu `panic`.
+Jika `i` tidak mengandung tipe `T`, perintah tersebut akan memicu `panic`.
 
 Untuk _memeriksa_ apakah sebuah isi interface benar mengandung tipe tertentu,
 penegasan tipe bisa mengembalikan dua nilai: nilai yang dikandung dan sebuah
@@ -266,11 +266,11 @@ dikandung oleh isi interface yang diberikan.
 
 	switch v := i.(type) {
 	case T:
-		// here v has type T
+		// di sini v bertipe T
 	case S:
-		// here v has type S
+		// di sini v bertipe S
 	default:
-		// no match; here v has the same type as i
+		// tidak ada yang cocok; disini v bertipe sama dengan i
 	}
 
 Deklarasi dalam sebuah tipe switch memiliki sintaks yang sama dengan penegasan

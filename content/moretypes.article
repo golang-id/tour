@@ -44,15 +44,12 @@ Bagian dari struct diakses menggunakan sebuah titik.
 
 * Pointer ke struct
 
-Untuk mengakses field `X` dari sebuah struct bila kita memiliki pointer ke
-sebuah struct `p`, kita dapat menulisnya dengan `(*p).X`.
-Namun, notasi tersebut tidak praktis, sehingga bahasa Go membolehkan kita
-mengaksesnya langsung dengan menulis hanya `p.X`.
+Bagian dari struct dapat diakses lewat pointer ke struct.
 
-Untuk mengakses bagian `X` dari sebuah struct, jika pointer `p` menunjuk ke
-sebuah struct, kita dapat mengaksesnya dengan menulis `(*p).X`.
-Namun, notasi seperti ini sangat menyulitkan, maka bahasa Go membolehkan untuk
-mengaksesnya langsung dengan `p.X` tanpa membutuhkan penunjukan ulang.
+Untuk mengakses bagian `X` dari sebuah struct bila kita memiliki pointer ke
+struct `p`, kita dapat menulisnya dengan `(*p).X`.
+Namun, notasi tersebut tidak praktis, sehingga Go membolehkan kita
+mengaksesnya langsung dengan menulis hanya `p.X`.
 
 .play moretypes/struct-pointers.go
 
@@ -120,12 +117,16 @@ array.
 Mengubah nilai dari elemen dari sebuah slice juga mengubah elemen di
 array-nya.
 
+Slice lain yang berbagi elemen array yang sama akan mendapatkan perubahan yang
+sama.
+
 .play moretypes/slices-pointers.go
 
 
-* Sifat Dasar Slice
+* Inisialisasi Slice
 
-Sebuah slice mirip dengan array tanpa panjang.
+Menginisialisasi slice mirip dengan array tapi tanpa mendefinisikan
+panjangnya.
 
 Berikut ini adalah sebuah array:
 
@@ -142,9 +143,9 @@ sebuah slice yang mengacu kepadanya:
 * Nilai Default Slice
 
 Saat memotong, anda bisa mengindahkan batas bawah atau atas sehingga Go akan
-menggunakan nilai default-nya.
+menggunakan nilai _default_-nya.
 
-Nilai default-nya adalah nol untuk batas bawah dan panjang dari slice untuk
+Nilai _default_-nya adalah nol untuk batas bawah dan panjang dari slice untuk
 batas atas.
 
 Untuk sebuah array berikut,
@@ -183,7 +184,7 @@ memperluasnya melebihi kapasitasnya dan lihat apa yang terjadi.
 
 * Slice kosong
 
-Nilai nol dari slice adalah `nil`.
+Nilai kosong dari slice adalah `nil`.
 
 Slice yang kosong memiliki panjang dan kapasitas 0, dan tidak memiliki array
 di dalamnya.
@@ -238,13 +239,12 @@ yang lebih besar akan dialokasikan.
 Kembaliannya yaitu slice yang merujuk ke array yang baru dialokasikan.
 
 (Untuk belajar lebih lanjut tentang slice, bacalah artikel
-[[https://blog.golang.org/go-slices-usage-and-internals][Slices: usage and
-internals]].)
+[[https://blog.golang.org/go-slices-usage-and-internals][Slices: usage and internals]].)
 
 .play moretypes/append.go
 
 
-* Rentang ("range")
+* Perintah "range"
 
 Perintah `range` pada pengulangan `for` mengiterasi sebuah slice atau map.
 
@@ -254,7 +254,7 @@ The first is the index, and the second is a copy of the element at that index.
 .play moretypes/range.go
 
 
-* Rentang lanjutan
+* Perintah "range" lanjutan
 
 Anda bisa melewati indeks atau nilai dengan operator `_`.
 
@@ -278,12 +278,10 @@ mengiterpretasikan nilai integer dengan warna abu-abu.
 Pilihan gambarnya terserah anda.
 Fungsi menarik yang bisa diikutkan berupa `(x+y)/2`, `x*y`, dan `x^y`.
 
-Petunjuk:
+(Anda membutuhkan pengulangan untuk mengalokasikan setiap `[]uint8`
+ke dalam `[][]uint8`.)
 
-- Anda membutuhkan penggunaan sebuah pengulangan untuk mengalokasi `[]uint8`
-di dalam `[][]uint8`.
-
-- Gunakan `uint8(intValue)` untuk mengkonversi antara tipe.
+(Gunakan `uint8(intValue)` untuk mengkonversi antara tipe.)
 
 .play moretypes/exercise-slices.go
 
@@ -301,13 +299,13 @@ untuk digunakan.
 
 .play moretypes/maps.go
 
-* Penggunaan Map
+* Inisialisasi Map
 
-Penggunaan map seperti pada penggunaan struct, tapi dengan membubuhkan key-nya.
+map diinisialisasi seperti pada `struct`, tapi dengan membubuhkan _key_-nya.
 
 .play moretypes/map-literals.go
 
-* Penggunaan map lanjutan
+* Inisialisasi map lanjutan
 
 Jika level teratas dari tipe hanya nama tipe, anda bisa menghilangkannya dari inisialisasi elemen map.
 
@@ -315,7 +313,7 @@ Jika level teratas dari tipe hanya nama tipe, anda bisa menghilangkannya dari in
 
 * Operasi map
 
-Pengisian atau mengubah elemen dalam map `m`:
+Mengisi atau mengubah elemen dalam map `m`:
 
 	m[key] = elem
 
@@ -327,7 +325,7 @@ Menghapus elemen:
 
 	delete(m, key)
 
-Menguji apakah sebuah key ada dalam map:
+Menguji apakah sebuah _key_ ada dalam map:
 
 	elem, ok = m[key]
 
@@ -352,7 +350,7 @@ dalam string `s`.
 Fungsi `wc.Test` menjalankan pengujian terhadap fungsi yang diberikan dan
 mencetak sukses atau salah.
 
-Anda mungkin menemukan artikel berikut
+Anda mungkin menemukan artikel
 [[https://golang.org/pkg/strings/#Fields][strings.Fields]]
 membantu anda.
 

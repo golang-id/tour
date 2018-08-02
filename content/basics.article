@@ -20,11 +20,11 @@ dengan perintah `package`rand`.
 #appengine: *Catatan:* Lingkungan di mana program di situs ini berjalan adalah
 #appengine: deterministik, sehingga setiap kali anda mengeksekusi contoh
 #appengine: program `rand.Intn` akan selalu mengembalikan angka yang sama.
-#appengine: 
 #appengine: (Untuk mendapatkan angka yang acak, tambahkan pembangkit angka;
 #appengine: lihat fungsi
-#appengine: [[https://golang.org/pkg/math/rand/#Seed][`rand.Seed`]]
-#appengine: .)
+#appengine: [[https://golang.org/pkg/math/rand/#Seed][`rand.Seed`]].
+#appengine: Waktu adalah konstant di dalam _playground_, jadi anda perlu
+#appengine: menggunakan hal lain sebagai pembangkit acak.)
 
 .play basics/packages.go
 
@@ -127,10 +127,11 @@ contoh sebelah.
 
 * Variabel dengan inisialisasi
 
-Deklarasi sebuah variabel bisa mengikutkan inisialisasi.
+Deklarasi sebuah variabel bisa mengikutkan inisialisasi, satu inisialisasi per
+variabel.
 
 Jika variabel diinisialisasi, maka tipe dari variabel bisa dihilangkan;
-sehingga variabel akan memiliki tipe sesuai dengan nilai inisialisasi.
+sehingga variabel akan memiliki tipe sesuai dengan inisialisasi.
 
 .play basics/variables-with-initializers.go
 
@@ -221,7 +222,7 @@ Bila sisi kanan dari deklarasi ditulis tipenya, maka variabel baru memiliki
 tipe yang sama:
 
 	var i int
-	j := i // j is an int
+	j := i // j adalah sebuah int
 
 Tapi bila sisi kanan berupa konstanta numerik, variabel baru bisa jadi `int`,
 `float64`, atau `complex128` bergantung kepada presisi dari konstanta:
@@ -265,5 +266,5 @@ Anda telah menyelesaikan pelajaran ini!
 
 Anda bisa kembali ke daftar
 [[/list][modul]]
-untuk melihat apa yang bisa dipelajari selanjutnya, atau meneruskan dengan
+untuk melihat apa yang bisa dipelajari selanjutnya, atau terus ke
 [[javascript:click(".next-page")][pelajaran selanjutnya]].

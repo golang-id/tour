@@ -9,10 +9,10 @@ https://golang.org
 Selamat datang di tur
 [[https://golang.org/][bahasa pemrograman Go]].
 
-Tur ini dibagi menjadi beberapa modul yang dapat anda akses dengan mengeklik
+Tur ini dibagi menjadi beberapa modul yang dapat anda akses dengan mengklik
 pada [[javascript:highlight(".logo")][Tur Go]] di bagian kiri atas halaman.
 
-Anda juga dapat setiap saat melihat daftar isi dengan mengeklik pada
+Anda juga dapat setiap saat melihat daftar isi dengan mengklik pada
 [[javascript:highlightAndClick(".nav")][menu]]
 di kanan atas halaman.
 
@@ -45,7 +45,7 @@ Saat anda mengklik pada tombol
 Anda bisa menghidup atau mematikan sintaks dengan mengklik pada tombol
 [[javascript:highlightAndClick(".syntax-checkbox")][sintaks]]
 
-Anda bisa mengaktifkan pewarnaan sintaks dengan mengeklik pada tombol
+Anda bisa mengaktifkan pewarnaan sintaks dengan mengklik pada tombol
 [[javascript:highlightAndClick(".syntax-checkbox")][sintaks]].
 
 Saat anda selesai, klik
@@ -64,8 +64,10 @@ Tur ini tersedia dalam beberapa bahasa:
 - [[https://tour.go-zh.org/][Simplified Chinese — 中文（简体）]]
 - [[https://go-tour-zh-tw.appspot.com/][Traditional Chinese — 中文（繁體）]]
 - [[https://go-tour-cz.appspot.com/][Czech — Česky]]
+- [[https://tour.golang.org/][English - English]]
 - [[https://go-tour-fr.appspot.com/][French — Français]]
 - [[https://go-tour-de.appspot.com/][German — Deutsch]]
+- [[https://go-tour-he.appspot.com/][Hebrew — עִבְרִית]]
 - [[https://go-tour-ita.appspot.com/][Italian — Italiano]]
 - [[https://go-tour-jp.appspot.com/][Japanese — 日本語]]
 - [[https://go-tour-kr.appspot.com/][Korean — 한국어]]
@@ -103,8 +105,8 @@ atau tekan `PageDown` untuk melanjutkan.
 #appengine: * Go Playground
 #appengine: 
 #appengine: Tur ini dibuat dengan
-#appengine: [[https://play.golang.org/][Go Playground]]
-#appengine: , sebuah layanan web yang berjalan di atas server
+#appengine: [[https://play.golang.org/][Go Playground]],
+#appengine: sebuah layanan web yang berjalan di atas server
 #appengine: [[https://golang.org/][golang.org]].
 #appengine:
 #appengine: Layanan tersebut menerima program Go, mengkompilasi, dan

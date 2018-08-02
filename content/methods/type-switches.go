@@ -11,7 +11,7 @@ func do(i interface{}) {
 	case string:
 		fmt.Printf("%q adalah %v bytes panjangnya\n", v, len(v))
 	default:
-		fmt.Printf("Saya tidak tipe %T!\n", v)
+		fmt.Printf("Saya tidak kenal dengan tipe %T!\n", v)
 	}
 }
 

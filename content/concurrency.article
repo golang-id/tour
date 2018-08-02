@@ -30,7 +30,7 @@ membutuhkannya karena ada fungsi primitif lainnya.
 
 * Kanal
 
-Kanal adalah sebuah penghubung tipe yang mana anda bisa mengirim dan menerima
+Kanal adalah sebuah penghubung tipe, yang mana anda bisa mengirim dan menerima
 nilai dengan operator kanal, `<-`.
 
 	ch <- v    // Kirim v ke kanal ch.
@@ -82,8 +82,8 @@ ditutup.
 Pengulangan `for`i`:=`range`c` menerima nilai dari kanal berulang kali sampai
 ditutup.
 
-*Catatan:* Hanya pengirim yang menutup kanal, penerima tidak pernah menutupnya.
-Mengirim ke kanal yang telah tertutup akan menyebabkan kepanikan.
+*Catatan:* Hanya pengirim yang sebaiknya menutup kanal, bukan si penerima.
+Mengirim ke kanal yang telah tertutup akan menyebabkan `panic`.
 
 *Catatan*lain:* Kanal tidak seperti file; yang mana anda tidak selalu perlu
 menutupnya.
@@ -95,7 +95,8 @@ nilai yang akan diterima, misalnya untuk menghentikan pengulangan pada
 
 * Perintah "select"
 
-Perintah `select` membuat goroutine menunggu operasi komunikasi.
+Perintah `select` membuat sebuah goroutine menunggu beberapa operasi
+komunikasi.
 
 `select` menahan pembacaan sampai salah satu kondisinya dapat berjalan,
 kemudian ia mengeksekusi kondisi tersebut.
@@ -103,7 +104,7 @@ Ia memilih salah satu kondisi secara acak jika banyak kondisi telah siap.
 
 .play concurrency/select.go
 
-* Seleksi bawaan
+* Seleksi "default"
 
 Kondisi `default` pada `select` dijalankan jika tidak ada kondisi yang siap.
 
@@ -220,11 +221,10 @@ konkuren!
 #appengine: Anda dapat memulai dengan
 #appengine: [[https://golang.org/doc/install/][memasang Go]].
 
-#appengine: Saat anda telah memasang Go,
-[[https://golang.org/doc/][Dokumentasi Go]]
-adalah tempat yang bagus untuk
+#appengine: Setelah Go terpasang,
+#appengine: [[https://golang.org/doc/][Dokumentasi Go]]
+#appengine: adalah tempat yang bagus untuk
 #appengine: melanjutkan.
-memulai.
 Dokumentasi tersebut berisi referensi, tutorial, video, dan banyak lagi.
 
 Untuk belajar cara mengorganisir dan bekerja dengan kode Go, lihat 
@@ -234,12 +234,11 @@ atau baca
 
 Jika anda membutuhkan bantuan dengan pustaka Go, lihat 
 [[https://golang.org/pkg/][referensi paket]].
-Untuk bantuan mengenai bahasa itu sendiri, anda mungkin bisa melihat
-[[https://golang.org/ref/spec][Spesifikasi Bahasa]]
-cukup dapat bisa dibaca.
+Untuk bantuan mengenai bahasa itu sendiri, anda mungkin bisa membaca
+[[https://golang.org/ref/spec][Spesifikasi Bahasa Go]].
 
 Untuk mengeksplorasi lebih lanjut tentang model konkurensi dari Go, tontonlah
-[[https://www.youtube.com/watch?v=f6kdp27TYZs][Pola Konkurensi]]
+[[https://www.youtube.com/watch?v=f6kdp27TYZs][Pola Konkurensi Go]]
 ([[https://talks.golang.org/2012/concurrency.slide][slide]])
 dan
 [[https://www.youtube.com/watch?v=QDDwwePbDtw][Pola Konkurensi Go Lanjutan]]

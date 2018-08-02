@@ -25,7 +25,7 @@ value('tableOfContents', [{
 }, {
     'id': 'concurrency',
     'title': 'Konkurensi',
-    'description': '<p>Go menyediakan fitur konkurensi sebagai bagian dari inti bahasa.</p><p>Modul ini ada pada goroutines dan channels, dan cara menggunakannya pada pola konkurensi yang berbeda.</p>',
+    'description': '<p>Go menyediakan fitur konkurensi sebagai bagian dari inti bahasa.</p><p>Modul ini mempelajari goroutines dan channels, dan cara menggunakannya pada pola konkurensi yang berbeda.</p>',
     'lessons': ['concurrency']
 }]).
 
