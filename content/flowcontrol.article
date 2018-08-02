@@ -156,7 +156,7 @@ Sebagai contoh,
 
 tidak akan memanggil fungsi `f` jika `i==0`.
 
-#appengine: *Catatan:* waktu dalam Go playground selalu berawal dari
+#appengine: *Catatan:* Waktu dalam Go playground selalu berawal dari
 #appengine: 2009-11-10 23:00:00 UTC, sebuah nilai yang maknanya bisa dicari
 #appengine: oleh pembaca.
 

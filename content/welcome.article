@@ -26,7 +26,7 @@ Anda bisa menavigasinya lewat
 - [[javascript:highlight(".next-page")]["selanjutnya"]] atau `PageDown` untuk ke halaman selanjutnya.
 
 Tur ini interaktif. Klik pada tombol
-[[javascript:highlightAndClick("#run")][Jalankan]]
+[[javascript:highlightAndClick("#run")][Jalan]]
 sekarang (atau tekan `Shift` + `Enter`) untuk mengkompilasi dan menjalankan
 program pada
 #appengine: server.

@@ -1,5 +1,5 @@
 Konkurensi
-Go menyediakan konstruksi konkurensi sebagai bagian dari inti bahasanya. Pelajaran kali ini menjelaskan dan memberikan beberapa contoh penggunaannya.
+Go menyediakan konstruksi konkurensi sebagai bagian dari inti bahasanya.  Pelajaran kali ini menjelaskan dan memberikan beberapa contoh penggunaannya.
 
 Para Penggubah Go
 https://golang.org
@@ -15,7 +15,8 @@ memulai sebuah goroutine baru `f` dengan menjalankan
 
 	f(x, y, z)
 
-Evaluasi dari nilai `f`, `x`, `y`, dan `z` terjadi di goroutine yang memanggil dan eksekusi dari `f` terjadi di goroutine yang baru.
+Evaluasi dari nilai `f`, `x`, `y`, dan `z` terjadi di goroutine yang memanggil
+dan eksekusi dari `f` terjadi di goroutine yang baru.
 
 Goroutine berjalan di ruang alamat yang sama, sehingga akses ke
 _shared_memory_ harus disinkronisasi.
@@ -29,7 +30,8 @@ membutuhkannya karena ada fungsi primitif lainnya.
 
 * Kanal
 
-Kanal adalah sebuah penghubung tipe yang mana anda bisa mengirim dan menerima nilai dengan operator kanal, `<-`.
+Kanal adalah sebuah penghubung tipe yang mana anda bisa mengirim dan menerima
+nilai dengan operator kanal, `<-`.
 
 	ch <- v    // Kirim v ke kanal ch.
 	v := <-ch  // Terima dari ch, dan simpan nilainya ke v.
@@ -41,7 +43,8 @@ Seperti map dan slice, kanal harus dibuat sebelum digunakan:
 	ch := make(chan int)
 
 Secara bawaan, pengiriman dan penerimaan ditahan sampai sisi yang lain siap.
-Hal ini membolehkan goroutine untuk melakukan sinkronisasi tanpa melakukan penguncian secara eksplisit atau menggunakan variabel kondisi.
+Hal ini membolehkan goroutine untuk melakukan sinkronisasi tanpa melakukan
+penguncian secara eksplisit atau menggunakan variabel kondisi.
 
 Contoh kode menjumlahkan angka yang ada di `slice`, dengan mendistribusikan
 kerja antara dua goroutine.
@@ -52,7 +55,8 @@ Saat kedua goroutine selesai, hasil akhirnya kemudian akan dihitung.
 * Kanal dengan buffer
 
 Kanal memiliki _buffer_.
-Cukup dengan menambahkan panjang buffer ke argumen kedua pada `make` untuk menginisialisasi buffer kanal:
+Cukup dengan menambahkan panjang buffer ke argumen kedua pada `make` untuk
+menginisialisasi buffer kanal:
 
 	ch := make(chan int, 100)
 
@@ -65,14 +69,18 @@ Ubahlah contoh untuk memenuhi buffer dan lihat apa yang terjadi.
 
 * "range" dan "close"
 
-Pengirim dapat menutup (`close`) sebuah kanal untuk menandakan bahwa tidak ada lagi data yang dikirim.
-Penerima dapat memeriksa apakah kanal telah ditutup dengan menambahkan parameter kedua pada ekspresi penerimaan:
+Pengirim dapat menutup (`close`) sebuah kanal untuk menandakan bahwa tidak ada
+lagi data yang dikirim.
+Penerima dapat memeriksa apakah kanal telah ditutup dengan menambahkan
+parameter kedua pada ekspresi penerimaan:
 
 	v, ok := <-ch
 
-`ok` bernilai `false` jika tidak ada lagi nilai yang diterima dan kanal telah ditutup.
+`ok` bernilai `false` jika tidak ada lagi nilai yang diterima dan kanal telah
+ditutup.
 
-Pengulangan `for`i`:=`range`c` menerima nilai dari kanal berulang kali sampai ditutup.
+Pengulangan `for`i`:=`range`c` menerima nilai dari kanal berulang kali sampai
+ditutup.
 
 *Catatan:* Hanya pengirim yang menutup kanal, penerima tidak pernah menutupnya.
 Mengirim ke kanal yang telah tertutup akan menyebabkan kepanikan.
@@ -89,7 +97,8 @@ nilai yang akan diterima, misalnya untuk menghentikan pengulangan pada
 
 Perintah `select` membuat goroutine menunggu operasi komunikasi.
 
-`select` menahan pembacaan sampai salah satu kondisinya dapat berjalan, kemudian ia mengeksekusi kondisi tersebut.
+`select` menahan pembacaan sampai salah satu kondisinya dapat berjalan,
+kemudian ia mengeksekusi kondisi tersebut.
 Ia memilih salah satu kondisi secara acak jika banyak kondisi telah siap.
 
 .play concurrency/select.go
@@ -118,8 +127,11 @@ Sebagai contohnya, berikut dua binary tree yang menyimpan urutan 1, 1, 2, 3,
 
 .image /content/img/tree.png
 
-Sebuah fungsi yang memeriksa apakah dua binary tree menyimpan urutan yang sama, akan cukup kompleks bila diiimplementasikan pada kebanyakan bahasa pemrograman.
-Kita akan gunakan konkurensi dan kanal untuk menulis sebuah solusi sederhana menggunakan Go.
+Sebuah fungsi yang memeriksa apakah dua binary tree menyimpan urutan yang
+sama, akan cukup kompleks bila diiimplementasikan pada kebanyakan bahasa
+pemrograman.
+Kita akan gunakan konkurensi dan kanal untuk menulis sebuah solusi sederhana
+menggunakan Go.
 
 Contoh ini menggunakan paket `tree`, yang mendefinisikan tipe:
 
@@ -148,11 +160,13 @@ Buat sebuah kanal baru `ch` dan jalankan fungsi `Walk`
 Kemudian baca dan cetak 10 nilai dari kanal.
 Ia harusnya mengeluarkan angka 1, 2, 3, ..., 10.
 
-*3.* Implementasikan fungsi `Same` menggunakan `Walk` untuk menentukan apakah `t1` dan `t2` menyimpan nilai yang sama.
+*3.* Implementasikan fungsi `Same` menggunakan `Walk` untuk menentukan apakah
+`t1` dan `t2` menyimpan nilai yang sama.
 
 *4.* Uji fungsi `Same`.
 
-`Same(tree.New(1),`tree.New(1))` mengembalikan nilai `true`, dan `Same(tree.New(1),`tree.New(2))` mengembalikan nilai `false`.
+`Same(tree.New(1),`tree.New(1))` mengembalikan nilai `true`, dan
+`Same(tree.New(1),`tree.New(2))` mengembalikan nilai `false`.
 
 Dokumentasi untuk `Tree` bisa ditemukan
 [[https://godoc.org/golang.org/x/tour/tree#Tree][di sini]].
@@ -196,10 +210,8 @@ Ubah fungsi `Crawl` untuk mengambil URL secara paralel tanpa ada duplikasi
 (mengambil URL yang sama dua kali).
 
 _Petunjuk_: anda bisa menyimpan _cache_ dari URL yang telah diambil
-menggunakan sebuah map, tapi map tidak aman untuk digunakan secara konkuren!
-
-_Petunjuk_: anda bisa menyimpan _cache_ dari URL yang telah diambil menggunakan
-sebuah `map`, tapi `map` tidak aman untuk digunakan secara konkuren!
+menggunakan sebuah `map`, tapi `map` tidak aman untuk digunakan secara
+konkuren!
 
 .play concurrency/exercise-web-crawler.go
 

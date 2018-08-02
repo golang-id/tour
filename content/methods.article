@@ -51,10 +51,10 @@ Hal ini berarti tipe _receiver_ memiliki sintaks `*T` untuk tipe `T`.
 
 Sebagai contohnya, method `Scale` didefinisikan pada `*Vertex`.
 
-Method dengan pointer-receiver dapat mengubah nilai yang diacu oleh receiver
-(seperti yang dilakukan oleh `Scale`).
-Karena method seringkali perlu mengubah receiver-nya, _pointer-receiver_ lebih
-umum ditemukan daripada _receiver_ yang bukan pointer.
+Method dengan _pointer-receiver_ dapat mengubah nilai yang ditunjuk (seperti
+yang dilakukan oleh `Scale`).
+Karena method terkadang perlu mengubah _receiver_ nya, _pointer-receiver_
+lebih umum digunakan daripada _receiver_ dengan value.
 
 Coba hapus `*` dari deklarasi fungsi `Scale` pada baris 16 dan perhatikan
 bagaimana perilaku program berubah.
@@ -151,7 +151,8 @@ nilai atau sebagai pointer, tapi tidak gabungan dari keduanya.
 
 Sebuah _type_interface_ didefinisikan sebagai sebuah kumpulan method penanda.
 
-Nilai dari tipe interface dapat menyimpan nilai apapun yang mengimplementasikan method tersebut.
+Nilai dari tipe interface dapat menyimpan nilai apapun yang
+mengimplementasikan method tersebut.
 
 *Catatan:* Terdapat kesalahan di contoh kode pada baris 22.
 `Vertex` (tipe nilai) tidak memenuhi `Abser` karena method `Abs` hanya
@@ -189,10 +190,10 @@ dengan nama yang sama pada tipe yang dipegangnya.
 Jika nilai sebenarnya dari interface itu sendiri adalah nil, method akan
 dipanggil dengan receiver bernilai nil.
 
-Pada beberapa bahasa pemrograman hal ini akan mengakibatkan null pointer
-exception atau kesalahan karena pointer bernilai kosong, tapi pada Go sangat
-umum menulis method dengan receiver bernilai nil (seperti method `M` pada
-contoh di sebelah.)
+Pada beberapa bahasa pemrograman hal ini akan mengakibatkan
+`null`pointer`exception` atau kesalahan karena pointer bernilai kosong, tapi
+pada Go sangat umum menulis method dengan receiver bernilai nil (seperti
+method `M` pada contoh di sebelah.)
 
 Ingatlah bahwa sebuah isi interface yang mengandung nilai konkrit nil
 sebenarnya adalah non-nil.
@@ -304,7 +305,8 @@ nilai.
 
 * Latihan: Stringer
 
-Buat tipe `IPAddr` yang mengimplementasikan `fmt.Stringer` untuk mencetak alamat dengan empat tanda titik.
+Buat tipe `IPAddr` yang mengimplementasikan `fmt.Stringer` untuk mencetak
+alamat dengan empat tanda titik.
 
 Misalnya, `IPAddr{1,`2,`3,`4}` mengeluarkan `"1.2.3.4"`.
 
@@ -320,9 +322,11 @@ Tipe `error` adalah interface buatan mirip dengan `fmt.Stringer`:
 		Error() string
 	}
 
-Seperti dengan `fmt.Stringer`, paket `fmt` mencari interface `error` saat mencetak nilai.
+Seperti dengan `fmt.Stringer`, paket `fmt` mencari interface `error` saat
+mencetak nilai.
 
-Fungsi terkadang mengembalikan nilai `error`, dan kode yang memanggilnya harus menangani error dengan memeriksa apakah error bernilai `nil`.
+Fungsi terkadang mengembalikan nilai `error`, dan kode yang memanggilnya harus
+menangani error dengan memeriksa apakah error bernilai `nil`.
 
 	i, err := strconv.Atoi("42")
 	if err != nil {
@@ -331,7 +335,8 @@ Fungsi terkadang mengembalikan nilai `error`, dan kode yang memanggilnya harus m
 	}
 	fmt.Println("Converted integer:", i)
 
-`error` yang nil menandakan sukses; `error` yang bukan-nil menandakan adanya kesalahan.
+`error` yang nil menandakan sukses; `error` yang bukan-nil menandakan adanya
+kesalahan.
 
 .play methods/errors.go
 
@@ -341,7 +346,8 @@ Salin fungsi `Sqrt` anda dari
 [[/flowcontrol/8][latihan sebelumnya]]
 dan ubah untuk mengembalikan nilai `error`.
 
-`Sqrt` seharusnya mengembalikan nilai error bukan-nil saat diberikan angka negatif, karena tidak mendukung bilangan kompleks.
+`Sqrt` seharusnya mengembalikan nilai error bukan-nil saat diberikan angka
+negatif, karena tidak mendukung bilangan kompleks.
 
 Buatlah tipe baru
 
@@ -351,20 +357,23 @@ dan buat dia sebagai `error` dengan memberikan method
 
 	func (e ErrNegativeSqrt) Error() string
 
-sehingga `ErrNegativeSqrt(-2).Error()` mengembalikan `"cannot`Sqrt`negative`number:`-2"`.
+sehingga `ErrNegativeSqrt(-2).Error()` mengembalikan
+`"cannot`Sqrt`negative`number:`-2"`.
 
 *Catatan:* Pemanggilan `fmt.Sprint(e)` di dalam method `Error` akan membuat
 program berulang tak henti.
-Anda dapat menghindari hal tersebut dengan mengkonversi `e`: `fmt.Sprint(float64(e))`.
-_Kenapa?_
+Anda dapat menghindari hal tersebut dengan mengkonversi `e`:
+`fmt.Sprint(float64(e))`.  _Kenapa?_
 
-Ubah fungsi `Sqrt` mengembalikan nilai `ErrNegativeSqrt` saat diberikan nilai negatif.
+Ubah fungsi `Sqrt` mengembalikan nilai `ErrNegativeSqrt` saat diberikan nilai
+negatif.
 
 .play methods/exercise-errors.go
 
 * Reader
 
-Paket `io` memiliki spesifikasi interface `io.Reader`, yang merepresentasikan berakhirnya pembacaan sebuah aliran data.
+Paket `io` memiliki spesifikasi interface `io.Reader`, yang merepresentasikan
+berakhirnya pembacaan sebuah aliran data.
 
 Standar pustaka Go memiliki
 [[https://golang.org/search?q=Read#Global][banyak implementasi]]
@@ -375,7 +384,8 @@ Interface `io.Reader` memiliki method `Read`:
 
 	func (T) Read(b []byte) (n int, err error)
 
-`Read` mengisi parameter slice byte dengan data dan mengembalikan jumlah byte yang diisi dan nilai errornya.
+`Read` mengisi parameter slice byte dengan data dan mengembalikan jumlah
+byte yang diisi dan nilai errornya jika ada.
 Ia mengembalikan error `io.EOF` saat aliran data berakhir.
 
 Contoh kode membuat sebuah 
@@ -386,7 +396,8 @@ dan memproses 8 bytes keluarannya.
 
 * Latihan: Reader
 
-Implementasikan sebuah tipe `Reader` yang menghilangkan karakter ASCII `'A'` yang panjang.
+Implementasikan sebuah tipe `Reader` yang menghilangkan karakter ASCII `'A'`
+yang panjang.
 
 .play methods/exercise-reader.go
 
@@ -394,11 +405,14 @@ Implementasikan sebuah tipe `Reader` yang menghilangkan karakter ASCII `'A'` yan
 
 Pola umumnya adalah sebuah
 [[https://golang.org/pkg/io/#Reader][io.Reader]]
-yang membungkus `io.Reader` lainnya, memodifikasi aliran data dengan cara tertentu.
+yang membungkus `io.Reader` lainnya, memodifikasi aliran data dengan cara
+tertentu.
 
 Sebagai contohnya, fungsi 
 [[https://golang.org/pkg/compress/gzip/#NewReader][gzip.NewReader]]
-mengambil `io.Reader` (aliran data terkompres) dan mengembalikan `*gzip.Reader` yang juga mengimplementasikan `io.Reader` (aliran data tak-terkompres).
+mengambil `io.Reader` (aliran data terkompres) dan mengembalikan
+`*gzip.Reader` yang juga mengimplementasikan `io.Reader` (aliran data
+tak-terkompres).
 
 Implementasikan `rot13Reader` yang mengimplementasikan `io.Reader` dengan
 membaca dari `io.Reader`, modifikasi aliran data dengan menerapkan penyandian
@@ -441,7 +455,8 @@ Interface dan tipe tersebut dispesifikasikan oleh
 
 * Latihan: Gambar
 
-Masih ingat generator gambar yang anda buat sebelumnya?
+Masih ingat dengan [[/moretypes/18][generator gambar]] yang anda buat
+sebelumnya?
 Mari kita buat satu lagi, tapi kali ini mengembalikan implementasi dari
 `image.Image` bukan sebuah slice dari data.
 
@@ -449,12 +464,14 @@ Definisikan tipe `Image` anda sendiri, kemudian implementasikan
 [[https://golang.org/pkg/image/#Image][method-method yang dibutuhkan]]
 , dan panggil `pic.ShowImage`.
 
-`Bounds` seharusnya mengembalikan `image.Rectangle`, seperti `image.Rect(0,`0,`w,`h)`.
+`Bounds` seharusnya mengembalikan `image.Rectangle`, seperti
+`image.Rect(0,`0,`w,`h)`.
 
 `ColorModel` seharusnya mengembalikan `color.RGBAModel`.
 
 `At` seharusnya mengembalikan sebuah warna;
-nilai `v` pada generator gambar berkoresponden dengan `color.RGBA{v,`v,`255,`255}`.
+nilai `v` pada generator gambar berkoresponden dengan
+`color.RGBA{v,`v,`255,`255}`.
 
 .play methods/exercise-images.go
 

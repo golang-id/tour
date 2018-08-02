@@ -60,7 +60,8 @@ mengaksesnya langsung dengan `p.X` tanpa membutuhkan penunjukan ulang.
 
 Sebuah `struct` bisa dibuat dengan mengisinya dengan nilai bagian-bagiannya.
 
-Anda juga bisa mengisi hanya sebagian dari kolom dengan menggunakan sintaks `Name:` (urutan dari bagian-bagiannya tidak berpengaruh).
+Anda juga bisa mengisi hanya sebagian dari kolom dengan menggunakan sintaks
+`Name:` (urutan dari bagian-bagiannya tidak berpengaruh).
 
 Prefik `&` mengembalikan sebuah pointer ke `struct`.
 
@@ -69,7 +70,8 @@ Prefik `&` mengembalikan sebuah pointer ke `struct`.
 
 * Array
 
-Deklarasi tipe dengan `[n]T` adalah untuk array dengan jumlah `n` dan bertipe `T`.
+Deklarasi tipe dengan `[n]T` adalah untuk array dengan jumlah `n` dan bertipe
+`T`.
 
 Ekspresi
 
@@ -77,7 +79,8 @@ Ekspresi
 
 mendeklarasikan sebuah variabel `a` sebagai sebuah array dari sepuluh integer.
 
-Panjang sebuah array adalah bagian dari tipenya, jadi array tidak bisa diubah ukurannya.
+Panjang sebuah array adalah bagian dari tipenya, jadi array tidak bisa diubah
+ukurannya.
 Hal ini sepertinya membatasi, tapi jangan khawatir;
 Go menyediakan cara yang mudah untuk bekerja dengan array.
 
@@ -277,7 +280,8 @@ Fungsi menarik yang bisa diikutkan berupa `(x+y)/2`, `x*y`, dan `x^y`.
 
 Petunjuk:
 
-- Anda membutuhkan penggunaan sebuah pengulangan untuk mengalokasi `[]uint8` di dalam `[][]uint8`.
+- Anda membutuhkan penggunaan sebuah pengulangan untuk mengalokasi `[]uint8`
+di dalam `[][]uint8`.
 
 - Gunakan `uint8(intValue)` untuk mengkonversi antara tipe.
 
@@ -343,8 +347,10 @@ bentuk deklarasi singkat berikut:
 * Latihan: map
 
 Implementasikan `WordCount`.
-Fungsi tersebut mengembalikan sebuah map dari penghitungan setiap "kata" di dalam string `s`.
-Fungsi `wc.Test` menjalankan pengujian terhadap fungsi yang diberikan dan mencetak sukses atau salah.
+Fungsi tersebut mengembalikan sebuah map dari penghitungan setiap "kata" di
+dalam string `s`.
+Fungsi `wc.Test` menjalankan pengujian terhadap fungsi yang diberikan dan
+mencetak sukses atau salah.
 
 Anda mungkin menemukan artikel berikut
 [[https://golang.org/pkg/strings/#Fields][strings.Fields]]
@@ -357,15 +363,16 @@ membantu anda.
 Fungsi adalah suatu nilai juga.
 Fungsi dapat dikirimkan kemanapun seperti nilai lainnya.
 
-Nilai fungsi bisa digunakan sebagai argumen pada fungsi dan sebagai nilai
-kembalian.
+Nilai fungsi bisa digunakan sebagai argumen pada fungsi lainnya dan sebagai
+nilai kembalian.
 
 .play moretypes/function-values.go
 
 * Fungsi closure
 
 Fungsi pada Go bisa _closure_.
-_Closure_ adalah sebuah nilai fungsi yang merujuk variabel dari blok fungsinya.
+_Closure_ adalah sebuah nilai fungsi yang merujuk variabel dari blok
+fungsinya.
 Fungsi closure bisa mengakses dan mengisi variabel yang dirujuk;
 dalam artian fungsi tersebut "terikat" ke variabel.
 
