@@ -1,61 +1,38 @@
 # Go Tour
 
-A Tour of Go is an introduction to the Go programming language. Visit
-https://tour.golang.org to start the tour.
+Tur Bahasa Pemrograman Go adalah sebuah pengenalan dari bahasa pemrograman Go.
+Kunjungi situs https://go-tour-id2.appspot.com untuk memulai tur.
 
-## Download/Install
+## Unduh/Pasang
 
-To install the tour from source, first
-[install Go](https://golang.org/doc/install) and then run:
+Untuk memasang tur dari sumber kode, pertama
+[siapkan sebuah _workspace_](https://golang.org/doc/code.html)
+dan kemudian jalankan:
 
-	$ go get golang.org/x/tour
+    $ go get golang.org/x/tour
 
-This will place a `tour` binary in your
-[workspace](https://golang.org/doc/code.html#Workspaces)'s `bin` directory.
-The tour program can be run offline.
+Perintah tersebut akan membuat program `tour` dalam direktori `bin` di
+_workspace_ anda, yang dapat dijalankan di lokal.
 
-## Contributing
+## Berkontribusi
 
-Contributions should follow the same procedure as for the Go project:
+Kontribusi sebaiknya mengikuti prosedur yang sama dengan proyek Go:
 https://golang.org/doc/contribute.html
 
-To run the tour server locally:
-
+Untuk menjalankan server tur di lokal:
 ```sh
 go run .
 ```
 
-Your browser should now open. If not, please visit [http://localhost:3999/](http://localhost:3999).
+Peramban anda seharusnya membuka halaman tur.
+Jika tidak, silakan buka [http://localhost:3999/](http://localhost:3999).
 
+## Pelaporan Isu / Pengiriman patch
 
-## Report Issues / Send Patches
+Repository ini menggunakan Github untuk perubahan kode, yang bisa diakses
+lewat https://github.com/golang-id/go-tour-id/issues.
 
-This repository uses Gerrit for code changes. To learn how to submit changes to
-this repository, see https://golang.org/doc/contribute.html.
+## Lisensi
 
-The main issue tracker for the tour is located at
-https://github.com/golang/go/issues. Prefix your issue with "tour:" in the
-subject line, so it is easy to find.
-
-## Deploying
-
-1.	To deploy tour.golang.org, run:
-
-	```
-	GO111MODULE=on gcloud --project=golang-org app deploy --no-promote app.yaml
-	```
-
-	This will create a new version, which can be viewed within the
-	[golang-org GCP project](https://console.cloud.google.com/appengine/versions?project=golang-org&serviceId=tour).
-
-2.	Check that the deployed version looks OK (click the version link in GCP).
-
-3.	If all is well, click "Migrate Traffic" to move 100% of the tour.golang.org
-	traffic to the new version.
-
-4.	You're done.
-
-## License
-
-Unless otherwise noted, the go-tour source files are distributed
-under the BSD-style license found in the LICENSE file.
+Kecuali bila dicantumkan, berkas sumber kode go-tour didistribusikan di bawah
+lisensi model BSD yang bisa ditemukan pada berkas LICENSE.
