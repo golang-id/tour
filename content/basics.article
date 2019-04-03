@@ -23,7 +23,7 @@ dengan perintah `package`rand`.
 #appengine: (Untuk mendapatkan angka yang acak, tambahkan pembangkit angka;
 #appengine: lihat fungsi
 #appengine: [[https://golang.org/pkg/math/rand/#Seed][`rand.Seed`]].
-#appengine: Waktu adalah konstant di dalam _playground_, jadi anda perlu
+#appengine: Waktu adalah konstan di dalam _playground_, jadi anda perlu
 #appengine: menggunakan hal lain sebagai pembangkit acak.)
 
 .play basics/packages.go
@@ -73,7 +73,7 @@ Perhatikan bahwa tipe berada _setelah_ nama variabel.
 
 .play basics/functions.go
 
-* Fungsi lanjutan
+* Fungsi (lanjutan)
 
 Saat dua atau lebih parameter fungsi memiliki tipe yang sama, anda bisa
 menggabungkannya menjadi satu.
@@ -88,7 +88,7 @@ menjadi
 
 .play basics/functions-continued.go
 
-* Banyak kembalian
+* Fungsi dengan banyak kembalian
 
 Sebuah fungsi dapat mengeluarkan banyak kembalian.
 
@@ -96,17 +96,17 @@ Fungsi `swap` mengembalikan dua `string`.
 
 .play basics/multiple-results.go
 
-* Kembalian bernama
+* Fungsi dengan kembalian bernama
 
-Nilai kembalian pada Go bisa diberi nama.
+Nilai kembalian dari fungsi bisa diberi nama.
 Jika nilai kembalian memiliki nama, mereka diperlakukan seperti variabel yang
 didefinisikan pada fungsi.
 
 Penamaan tersebut seharusnya digunakan untuk mendokumentasikan makna dari
 nilai kembalian.
 
-Sebuah perintah `return` tanpa kembalian mengembalikan nilai sekarang dari
-setiap variabel kembalian.
+Sebuah perintah `return` tanpa nilai kembalian, mengembalikan nilai terakhir
+yang disimpan dari setiap variabel kembalian.
 Hal ini dikenal dengan kembalian "naked".
 
 Perintah kembalian "naked" sebaiknya hanya digunakan pada fungsi yang singkat,
