@@ -9,7 +9,7 @@ package main
 import (
 	"strings"
 
-	"golang.org/x/tour/wc"
+	"github.com/Go-ID-community/go-tour-id/wc"
 )
 
 func WordCount(s string) map[string]int {

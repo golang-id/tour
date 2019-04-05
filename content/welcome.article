@@ -95,7 +95,7 @@ atau tekan `PageDown` untuk melanjutkan.
 #appengine: [[https://golang.org/dl/][unduh and pasang Go]]
 #appengine: kemudian jalankan program tour dengan cara,
 #appengine:
-#appengine:   go get golang.org/x/tour
+#appengine:   go get github.com/golang-id/tour
 #appengine:
 #appengine: Program `tour` akan membuka peramban web yang menampilkan versi
 #appengine: lokal dari tur.
