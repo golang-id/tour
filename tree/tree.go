@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package tree // import "github.com/Go-ID-community/go-tour-id/tree"
+package tree // import "github.com/golang-id/tour/tree"
 
 import (
 	"fmt"

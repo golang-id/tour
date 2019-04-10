@@ -49,7 +49,7 @@ value('translation', {
     'submit-feedback': 'Kirim umpan-balik tentang halaman ini',
 
     // GitHub issue template: update repo and messaging when translating.
-    'github-repo': 'github.com/Go-ID-community/go-tour-id',
+    'github-repo': 'github.com/golang-id/tour',
     'issue-title': 'tur: [GANTI DENGAN DESKRIPSI SINGKAT]',
     'issue-message': 'Ganti judul di atas dan jelaskan isu yang anda hadapi di sini, ikutkan kode jika diperlukan',
     'context': 'Konteks',

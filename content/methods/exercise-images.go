@@ -2,7 +2,7 @@
 
 package main
 
-import "github.com/Go-ID-community/go-tour-id/pic"
+import "github.com/golang-id/tour/pic"
 
 type Image struct{}
 

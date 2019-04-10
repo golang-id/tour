@@ -2,7 +2,7 @@
 
 package main
 
-import "github.com/Go-ID-community/go-tour-id/reader"
+import "github.com/golang-id/tour/reader"
 
 type MyReader struct{}
 

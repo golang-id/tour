@@ -9,7 +9,7 @@ Untuk memasang tur dari sumber kode, pertama
 [siapkan sebuah _workspace_](https://golang.org/doc/code.html)
 dan kemudian jalankan:
 
-    $ go get github.com/Go-ID-community/go-tour-id
+    $ go get github.com/golang-id/tour
 
 Perintah tersebut akan membuat program `tour` dalam direktori `bin` di
 _workspace_ anda, yang dapat dijalankan di lokal.
@@ -30,7 +30,7 @@ Jika tidak, silakan buka [http://localhost:3999/](http://localhost:3999).
 ## Pelaporan Isu / Pengiriman patch
 
 Repository ini menggunakan Github untuk perubahan kode, yang bisa diakses
-lewat https://github.com/Go-ID-community/go-tour-id/issues.
+lewat https://github.com/golang-id/tour/issues.
 
 ## Lisensi
 

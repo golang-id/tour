@@ -2,7 +2,7 @@
 
 package main
 
-import "github.com/Go-ID-community/go-tour-id/tree"
+import "github.com/golang-id/tour/tree"
 
 // Walk walks the tree t sending all values
 // from the tree to the channel ch.

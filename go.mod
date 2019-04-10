@@ -1,4 +1,4 @@
-module github.com/Go-ID-community/go-tour-id
+module github.com/golang-id/tour
 
 go 1.11
 
