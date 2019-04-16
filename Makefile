@@ -1,7 +1,7 @@
 .PHONY: serve deploy
 
 serve:
-	goapp serve
+	dev_appserver.py app.yaml
 
 deploy:
-	goapp deploy
+	gcloud app deploy
