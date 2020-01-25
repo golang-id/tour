@@ -24,15 +24,33 @@ Untuk menjalankan server tur di lokal:
 go run .
 ```
 
-Peramban anda seharusnya membuka halaman tur.
-Jika tidak, silakan buka [http://localhost:3999/](http://localhost:3999).
+Peramban Anda seharusnya akan membuka halaman tur secara otomatis, jika tidak
+buka langsung di [http://localhost:3999/](http://localhost:3999).
 
 ## Pelaporan Isu / Pengiriman patch
 
 Repository ini menggunakan Github untuk perubahan kode, yang bisa diakses
 lewat https://github.com/golang-id/tour/issues.
 
+## Penerbitan
+
+1.	Untuk menerbitkan tour.golang.org, jalankan:
+
+	```
+	GO111MODULE=on gcloud --project=go-tour-id2 app deploy --no-promote app.yaml
+	```
+	Perintah tersebut akan membuat versi baru, yang dapat dilihat di
+	[golang-org GCP project](https://console.cloud.google.com/appengine/versions?project=go-tour-id2&serviceId=default).
+
+2.	Periksa apakah versi yang diterbitkan berjalan (klik pada tautan
+	version di GCP).
+
+3.	Jika semua berjalan dengan baik, klik "Migrate Traffic" untuk
+	memindahkan 100% semua traffik ke versi yang baru.
+
+4.	Selesai.
+
 ## Lisensi
 
-Kecuali bila dicantumkan, berkas sumber kode go-tour didistribusikan di bawah
+Kecuali bila dicantumkan, berkas sumber kode go-tour didistribusikan dengan
 lisensi model BSD yang bisa ditemukan pada berkas LICENSE.

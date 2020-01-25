@@ -122,8 +122,8 @@ Gunakan kondisi `default` untuk mencoba mengirim dan menerima tanpa diblok:
 * Latihan: Binary Tree yang sama
 
 Ada banyak cara membangun sebuah _binary_tree_ dengan urutan nilai yang sama
-tersimpan di _leave_ nya.
-Sebagai contohnya, berikut dua binary tree yang menyimpan urutan 1, 1, 2, 3,
+tersimpan di dalamnya.
+Sebagai contohnya, berikut dua _binary_tree_ yang menyimpan urutan 1, 1, 2, 3,
 5, 8, 13.
 
 .image /content/img/tree.png

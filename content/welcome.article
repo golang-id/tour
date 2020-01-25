@@ -83,13 +83,12 @@ Klik tombol
 [[javascript:highlightAndClick(".next-page")]["selanjutnya"]]
 atau tekan `PageDown` untuk melanjutkan.
 
-#appengine: * Go offline (optional)
+#appengine: * Go offline (opsional)
 #appengine:
 #appengine: Tur ini juga tersedia dalam program yang berjalan tersendiri yang
 #appengine: dapat anda gunakan tanpa akses internet.
-#appengine:
-#appengine: Tur yang berjalan sendiri lebih cepat, karena ia membuat and
-#appengine: menjalankan sampel program di mesin anda sendiri.
+#appengine: Ia akan membuat dan menjalankan contoh kode di dalam mesin Anda
+#appengine: sendiri.
 #appengine:
 #appengine: Untuk dapat menjalakan tur secara lokal, pertama
 #appengine: [[https://golang.org/dl/][unduh and pasang Go]]
@@ -97,10 +96,14 @@ atau tekan `PageDown` untuk melanjutkan.
 #appengine:
 #appengine:   go get github.com/golang-id/tour
 #appengine:
-#appengine: Program `tour` akan membuka peramban web yang menampilkan versi
-#appengine: lokal dari tur.
+#appengine: Perintah tersebut akan memasang program `tour` di dalam direktori
+#appengine: `bin` di
+#appengine: [[https://golang.org/doc/code.html#Workspaces][ruang kerja]]
+#appengine: Anda.
+#appengine: Saat Anda menjalankan program `tour`, ia akan membuka peramban web
+#appengine: yang menampilkan versi lokal dari tur.
 #appengine: 
-#appengine: Atau, tentu saja, anda bisa melanjutkan tur di situs ini.
+#appengine: Tentu saja, anda bisa melanjutkan tur di situs ini.
 
 #appengine: * Go Playground
 #appengine: 

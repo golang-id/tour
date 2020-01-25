@@ -1,7 +1,7 @@
 .PHONY: serve deploy
 
 serve:
-	dev_appserver.py app.yaml
+	go run .
 
 deploy:
-	gcloud app deploy
+	gcloud --project=go-tour-id2 app deploy --promote app.yaml
