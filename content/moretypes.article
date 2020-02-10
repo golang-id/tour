@@ -248,8 +248,10 @@ Kembaliannya yaitu slice yang merujuk ke array yang baru dialokasikan.
 
 Perintah `range` pada pengulangan `for` mengiterasi sebuah slice atau map.
 
-When ranging over a slice, two values are returned for each iteration.
-The first is the index, and the second is a copy of the element at that index.
+Saat melakukan pengulangan dengan `range` pada slice, dua nilai akan
+dikembalikan pada setiap iterasi.
+Nilai pertama yaitu indeks, dan nilai kedua yaitu _salinan_ dari elemen pada
+indeks tersebut.
 
 .play moretypes/range.go
 
