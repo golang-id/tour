@@ -1,7 +1,7 @@
 # Go Tour
 
 Tur Bahasa Pemrograman Go adalah sebuah pengenalan dari bahasa pemrograman Go.
-Kunjungi situs https://go-tour-id2.appspot.com untuk memulai tur.
+Kunjungi situs https://tour.golang-id.org untuk memulai tur.
 
 ## Unduh/Pasang
 
@@ -37,7 +37,7 @@ lewat https://github.com/golang-id/tour/issues.
 1.	Untuk menerbitkan tour.golang.org, jalankan:
 
 	```
-	GO111MODULE=on gcloud --project=go-tour-id2 app deploy --no-promote app.yaml
+	gcloud --project=go-tour-id2 app deploy --no-promote app.yaml
 	```
 	Perintah tersebut akan membuat versi baru, yang dapat dilihat di
 	[golang-org GCP project](https://console.cloud.google.com/appengine/versions?project=go-tour-id2&serviceId=default).
