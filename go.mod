@@ -1,5 +1,12 @@
 module github.com/golang-id/tour
 
-go 1.11
+go 1.18
 
-require golang.org/x/tools v0.0.0-20190312164927-7b79afddac43
+require golang.org/x/tools v0.6.0
+
+require (
+	github.com/yuin/goldmark v1.5.4 // indirect
+	golang.org/x/mod v0.8.0 // indirect
+	golang.org/x/net v0.7.0 // indirect
+	golang.org/x/sys v0.5.0 // indirect
+)
