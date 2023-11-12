@@ -1,6 +1,6 @@
 module github.com/golang-id/tour
 
-go 1.18
+go 1.21
 
 require (
 	golang.org/x/tools v0.6.0
