@@ -1,6 +1,9 @@
 # Go Tour
 
-Tur Bahasa Pemrograman Go adalah sebuah pengenalan dari bahasa pemrograman Go.
+[![Go Reference](https://pkg.go.dev/badge/github.com/golang-id/tour.svg)](https://pkg.go.dev/github.com/golang-id/tour)
+
+Tur Bahasa Pemrograman Go adalah sebuah situs pengenalan untuk bahasa
+pemrograman Go.
 Kunjungi situs https://tour.golang-id.org untuk memulai tur.
 
 ## Unduh/Pasang

@@ -2,7 +2,10 @@ module github.com/golang-id/tour
 
 go 1.18
 
-require golang.org/x/tools v0.6.0
+require (
+	golang.org/x/tools v0.6.0
+	golang.org/x/tour v0.1.0
+)
 
 require (
 	github.com/yuin/goldmark v1.5.4 // indirect

@@ -1,18 +1,27 @@
-// Copyright 2011 The Go Authors.  All rights reserved.
+// Copyright 2011 The Go Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
+// Package pic mengimplementasikan fungsi untuk menampilkan gambar di
+// Go Playground.
 package pic // import "github.com/golang-id/tour/pic"
 
 import (
-	"bytes"
+	"bufio"
 	"encoding/base64"
-	"fmt"
 	"image"
 	"image/png"
+	"io"
+	"os"
 )
 
-func Show(f func(int, int) [][]uint8) {
+// Show menampilkan gambar dari fungsi f saat di eksekusi di Go Playground.
+//
+// f mengembalikan sebuah slice dengan panjang dy, setiap elemen dari slice
+// tersebut adalah sebuah slice dx, 8-bit unsigned int.
+// Nilai integer diinterpretasikan sebagai nilai rentang warna biru, yang
+// mana nilai 0 berarti biru, dan 255 berwarna putih.
+func Show(f func(dx, dy int) [][]uint8) {
 	const (
 		dx = 256
 		dy = 256
@@ -32,12 +41,17 @@ func Show(f func(int, int) [][]uint8) {
 	ShowImage(m)
 }
 
+// ShowImage displays the image m
+// when executed on the Go Playground.
 func ShowImage(m image.Image) {
-	var buf bytes.Buffer
-	err := png.Encode(&buf, m)
+	w := bufio.NewWriter(os.Stdout)
+	defer w.Flush()
+	io.WriteString(w, "IMAGE:")
+	b64 := base64.NewEncoder(base64.StdEncoding, w)
+	err := (&png.Encoder{CompressionLevel: png.BestCompression}).Encode(b64, m)
 	if err != nil {
 		panic(err)
 	}
-	enc := base64.StdEncoding.EncodeToString(buf.Bytes())
-	fmt.Println("IMAGE:" + enc)
+	b64.Close()
+	io.WriteString(w, "\n")
 }

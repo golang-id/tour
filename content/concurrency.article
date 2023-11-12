@@ -227,9 +227,7 @@ konkuren!
 #appengine: melanjutkan.
 Dokumentasi tersebut berisi referensi, tutorial, video, dan banyak lagi.
 
-Untuk belajar cara mengorganisir dan bekerja dengan kode Go, lihat 
-[[https://www.youtube.com/watch?v=XCsL89YtqCs][siaran berikut]]
-atau baca
+Untuk belajar cara mengorganisir dan bekerja dengan kode Go, bacalah
 [[https://golang.org/doc/code.html][Cara Menulis Kode Go]].
 
 Jika anda membutuhkan bantuan dengan pustaka Go, lihat 
