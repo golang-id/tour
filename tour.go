@@ -67,7 +67,7 @@ func initTour(root, transport string) error {
 	}
 	uiContent = buf.Bytes()
 
-	return initScript(root)
+	return initScript(root, socketAddr(), transport)
 }
 
 // initLessonss finds all the lessons in the passed directory, renders them,
@@ -225,7 +225,7 @@ func renderUI(w io.Writer) error {
 
 // initScript concatenates all the javascript files needed to render
 // the tour UI and serves the result on /script.js.
-func initScript(root string) error {
+func initScript(root, socketAddr, transport string) error {
 	modTime := time.Now()
 	b := new(bytes.Buffer)
 
@@ -260,6 +260,15 @@ func initScript(root string) error {
 			return fmt.Errorf("error concatenating %v: %v", file, err)
 		}
 	}
+
+	f, err := os.ReadFile(filepath.Join(root, "static/js/page.js"))
+	if err != nil {
+		return err
+	}
+	s := string(f)
+	s = strings.ReplaceAll(s, "{{.SocketAddr}}", socketAddr)
+	s = strings.ReplaceAll(s, "{{.Transport}}", transport)
+	b.WriteString(s)
 
 	http.HandleFunc("/script.js", func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Content-type", "application/javascript")

@@ -237,16 +237,16 @@ Untuk bantuan mengenai bahasa itu sendiri, anda mungkin bisa membaca
 
 Untuk mengeksplorasi lebih lanjut tentang model konkurensi dari Go, tontonlah
 [[https://www.youtube.com/watch?v=f6kdp27TYZs][Pola Konkurensi Go]]
-([[https://talks.golang.org/2012/concurrency.slide][slide]])
+([[https://go.dev/talks/2012/concurrency.slide][slide]])
 dan
 [[https://www.youtube.com/watch?v=QDDwwePbDtw][Pola Konkurensi Go Lanjutan]]
-([[https://talks.golang.org/2013/advconc.slide][slides]])
+([[https://go.dev/talks/2013/advconc.slide][slides]])
 dan baca
 [[https://golang.org/doc/codewalk/sharemem/][Berbagi Memory dengan Komunikasi]].
 
 Untuk memulai membuat aplikasi web, tontonlah
 [[https://vimeo.com/53221558][A simple programming environment]]
-([[https://talks.golang.org/2012/simple.slide][slides]])
+([[https://go.dev/talks/2012/simple.slide][slides]])
 dan baca tutorial
 [[https://golang.org/doc/articles/wiki/][Menulis Aplikasi Web]].
 
