@@ -23,6 +23,11 @@ value('tableOfContents', [{
     'description': '<p>Belajar cara mendefinisikan method pada tipe, cara deklarasi interface, dan cara menggabungkan keduanya.</p>',
     'lessons': ['methods']
 }, {
+    'id': 'generics',
+    'title': 'Generics',
+    'description': '<p>Belajar menggunakan parameter tipe pada fungsi dan struct di Go.</p>',
+    'lessons': ['generics']
+}, {
     'id': 'concurrency',
     'title': 'Konkurensi',
     'description': '<p>Go menyediakan fitur konkurensi sebagai bagian dari inti bahasa.</p><p>Modul ini mempelajari goroutines dan channels, dan cara menggunakannya pada pola konkurensi yang berbeda.</p>',

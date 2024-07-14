@@ -61,6 +61,7 @@ factory('run', ['$window', 'editor',
                 code += '\n' +
                     '-- go.mod --\n' +
                     'module example\n' +
+                    'go 1.18\n' +
                     'require golang.org/x/tour v0.0.0-20201207214521-004403599411\n' +
                     '-- go.sum --\n' +
                     'golang.org/x/crypto v0.0.0-20190308221718-c2843e01d9a2/go.mod h1:djNgcEr1/C05ACkg1iLfiJU5Ep61QUkGW8qpdssI0+w=\n' +

@@ -1,0 +1,50 @@
+Generik
+Go mendukung pemrograman generik menggunakan parameter tipe.  Pelajaran kali ini memperlihatkan beberapa contoh penerapan generik di dalam kode Anda.
+
+Para Penggubah Go
+https://golang.org
+
+* Parameter tipe
+
+Fungsi-fungsi pada Go dapat bekerja dengan beragam tipe menggunakan
+parameter tipe.
+Parameter tipe dari sebuah fungsi ditulis dalam kurung siku, sebelum
+argumen dari fungsi.
+
+  func Index[T comparable](s []T, x T) int
+
+Deklarasi di atas menyatakan bahwa `s` adalah sebuah slice bertipe `T`
+yang memenuhi syarat `comparable`.
+`x` juga variabel parameter dengan tipe yang sama.
+
+`comparable` adalah syarat yang memungkinkan penggunaan operator `==` dan
+`!=` terhadap nilai dari tipe.
+Pada contoh berikut, kita mengggunakan fungsi `Index` untuk membandingkan
+sebuah nilai dengan semua elemen dari slice sampai nilai yang sama
+ditemukan.
+Fungsi `Index` bekerja untuk semua tipe yang mendukung pembandingan.
+
+.play generics/index.go
+
+* Tipe generik
+
+Selain fungsi generik, Go juga mendukung tipe generik.
+Sebuah tipe dapat diberi parameter dengan parameter tipe, yang dapat berguna
+untuk mengimplementasikan struktur data generik.
+
+Contoh berikut memperlihatkan sebuah deklarasi tipe sederhana untuk
+linked-list yang dapat menyimpan tipe apa pun.
+
+Sebagai latihan, coba tambahkan beberapa fungsionalitas pada implementasi
+linked-list tersebut.
+
+.play generics/list.go
+
+* Selamat!
+
+Anda telah menyelesaikan pelajaran tentang generik!
+
+Anda dapat kembali ke daftar
+[[/list][modul]]
+untuk menemukan pelajaran lainnya, atau lanjut ke
+[[javascript:click('.next-page')][pelajaran selanjutnya]].
