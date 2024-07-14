@@ -17,15 +17,6 @@ Aturannya, nama paket sama dengan elemen terakhir dari path `import`.
 Sebagai contohnya, paket `"math/rand"` terdiri dari berkas-berkas yang dimulai
 dengan perintah `package`rand`.
 
-#appengine: *Catatan:* Lingkungan di mana program di situs ini berjalan adalah
-#appengine: deterministik, sehingga setiap kali anda mengeksekusi contoh
-#appengine: program `rand.Intn` akan selalu mengembalikan angka yang sama.
-#appengine: (Untuk mendapatkan angka yang acak, tambahkan pembangkit angka;
-#appengine: lihat fungsi
-#appengine: [[https://golang.org/pkg/math/rand/#Seed][`rand.Seed`]].
-#appengine: Waktu adalah konstan di dalam _playground_, jadi anda perlu
-#appengine: menggunakan hal lain sebagai pembangkit acak.)
-
 .play basics/packages.go
 
 * Import
