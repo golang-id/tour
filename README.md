@@ -1,59 +1,67 @@
-# Go Tour
-
-[![Go Reference](https://pkg.go.dev/badge/github.com/golang-id/tour.svg)](https://pkg.go.dev/github.com/golang-id/tour)
+# Tur bahasa pemrograman Go
 
 Tur Bahasa Pemrograman Go adalah sebuah situs pengenalan untuk bahasa
 pemrograman Go.
-Kunjungi situs https://tour.golang-id.org untuk memulai tur.
+Kunjungi situs
+<https://tour.golang-id.org>
+untuk memulai tur.
 
-## Unduh/Pasang
 
-Untuk memasang tur dari sumber kode, pertama
-[siapkan sebuah _workspace_](https://golang.org/doc/code.html)
-dan kemudian jalankan:
+## Pasang
 
-    $ go get github.com/golang-id/tour
+Untuk memasang dan menjalankan tur dari sumber kode, memerlukan
+perkakas
+[Git SCM](https://git-scm.com/)
+dan
+[Go](https://golang-id.org/doc/install/).
 
-Perintah tersebut akan membuat program `tour` dalam direktori `bin` di
-_workspace_ anda, yang dapat dijalankan di lokal.
+Pertama, salin repositori ini ke lokal,
 
-## Berkontribusi
-
-Kontribusi sebaiknya mengikuti prosedur yang sama dengan proyek Go:
-https://golang.org/doc/contribute.html
-
-Untuk menjalankan server tur di lokal:
-```sh
-go run .
+```
+$ git clone https://github.com/golang-id/tour.git
 ```
 
-Peramban Anda seharusnya akan membuka halaman tur secara otomatis, jika tidak
-buka langsung di [http://localhost:3999/](http://localhost:3999).
+Kemudian, jalankan server Tour di lokal:
 
-## Pelaporan Isu / Pengiriman patch
+```
+$ go run .
+```
 
-Repository ini menggunakan Github untuk perubahan kode, yang bisa diakses
-lewat https://github.com/golang-id/tour/issues.
+Sebuah peramban akan membuka halaman tur secara otomatis, jika
+tidak, buka langsung di
+<http://localhost:3999/>
+
+
+## Pelaporan isu dan perbaikan
+
+Repository ini menggunakan GitHub untuk perubahan kode.
+
+Isu dapat diakses dan dilaporkan lewat
+<https://github.com/golang-id/tour/issues>.
+
+Perubahan dapat dikirim lewat _pull request_ ke
+<https://github.com/golang-id/tour/pulls>.
+
 
 ## Penerbitan
 
-1.	Untuk menerbitkan tour.golang.org, jalankan:
+(Bagian ini hanya khusus untuk pengelola situs).
 
-	```
-	gcloud --project=go-tour-id2 app deploy --no-promote app.yaml
-	```
-	Perintah tersebut akan membuat versi baru, yang dapat dilihat di
-	[golang-org GCP project](https://console.cloud.google.com/appengine/versions?project=go-tour-id2&serviceId=default).
+Untuk menerbitkan versi Tour yang baru ke tour.golang-id.org, jalankan:
 
-2.	Periksa apakah versi yang diterbitkan berjalan (klik pada tautan
-	version di GCP).
+```
+$ gcloud --project=go-tour-id2 app deploy --no-promote app.yaml
+```
 
-3.	Jika semua berjalan dengan baik, klik "Migrate Traffic" untuk
-	memindahkan 100% semua traffik ke versi yang baru.
+Perintah tersebut akan membuat versi baru, yang dapat dilihat di
+[golang-org GCP project](https://console.cloud.google.com/appengine/versions?project=go-tour-id2&serviceId=default).
+Periksa apakah versi yang baru berjalan dengan meng-klik pada tautan
+"version" di GCP.
+Jika semua berjalan dengan baik, klik "Migrate Traffic" untuk
+memindahkan semua koneksi ke versi yang baru.
 
-4.	Selesai.
 
 ## Lisensi
 
-Kecuali bila dicantumkan, berkas sumber kode go-tour didistribusikan dengan
-lisensi model BSD yang bisa ditemukan pada berkas LICENSE.
+Berkas sumber kode go-tour di-distribusi dengan lisensi model BSD yang bisa
+ditemukan pada berkas LICENSE, kecuali bila dicantumkan berbeda.
