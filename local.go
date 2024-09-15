@@ -36,8 +36,14 @@ const (
 )
 
 var (
-	httpListen  = flag.String("http", "127.0.0.1:3999", "host:port to listen on")
-	openBrowser = flag.Bool("openbrowser", false, "open browser automatically")
+	httpListen      = flag.String("http", "127.0.0.1:3999", "host:port to listen on")
+	openBrowser     = flag.Bool("openbrowser", false, "open browser automatically")
+	websocketOrigin = flag.String(`ws-origin`, ``,
+		`Set origin for handling WebSocket connection.
+For service that are running behind proxy (on different IP and port than
+httpListen) and/or with domain name you should set this option for WebSocket
+to works.
+Example value: "https://tour.golang-id.local".`)
 )
 
 var (
@@ -127,7 +133,16 @@ func main() {
 	http.HandleFunc("/", rootHandler)
 	http.HandleFunc("/lesson/", lessonHandler)
 
-	origin := &url.URL{Scheme: "http", Host: host + ":" + port}
+	var origin *url.URL
+
+	if *websocketOrigin != `` {
+		origin, err = url.Parse(*websocketOrigin)
+		if err != nil {
+			log.Fatalf(`invalid ws-origin: %s`, err)
+		}
+	} else {
+		origin = &url.URL{Scheme: "http", Host: host + ":" + port}
+	}
 	http.Handle(socketPath, socket.NewHandler(origin))
 
 	registerStatic(root)
