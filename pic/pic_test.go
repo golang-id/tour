@@ -4,7 +4,7 @@
 
 package pic_test
 
-import "golang.org/x/tour/pic"
+import "github.com/golang-id/tour/pic"
 
 func ExampleShow() {
 	f := func(dx, dy int) [][]uint8 {
