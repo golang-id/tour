@@ -22,6 +22,7 @@ import (
 	"strings"
 	"time"
 
+	"git.sr.ht/~shulhan/pakakeh.go/lib/systemd"
 	"golang.org/x/tools/playground/socket"
 
 	// Imports so that go build/install automatically installs them.
@@ -155,7 +156,29 @@ func main() {
 			log.Printf("Please open your web browser and visit %s", url)
 		}
 	}()
-	log.Fatal(http.ListenAndServe(httpAddr, nil))
+
+	listeners, err := systemd.Listeners(true)
+	if err != nil {
+		log.Fatal(err)
+	}
+	if len(listeners) > 1 {
+		log.Fatal(`too many listeners received for activation`)
+	}
+	var listener net.Listener
+	if len(listeners) == 1 {
+		listener = listeners[0]
+		gotAddr := listener.Addr().String()
+		if gotAddr != httpAddr {
+			log.Fatalf(`invalid Listener address, got %s, want %s`,
+				gotAddr, httpAddr)
+		}
+	}
+	if listener != nil {
+		err = http.Serve(listener, nil)
+	} else {
+		err = http.ListenAndServe(httpAddr, nil)
+	}
+	log.Fatal(err)
 }
 
 // registerStatic registers handlers to serve static content
