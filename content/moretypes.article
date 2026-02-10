@@ -142,7 +142,7 @@ sebuah slice yang mengacu kepadanya:
 
 * Nilai Default Slice
 
-Saat memotong, anda bisa mengindahkan batas bawah atau atas sehingga Go akan
+Saat memotong, anda bisa mengabaikan batas bawah atau atas sehingga Go akan
 menggunakan nilai _default_-nya.
 
 Nilai _default_-nya adalah nol untuk batas bawah dan panjang dari slice untuk
