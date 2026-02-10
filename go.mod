@@ -1,6 +1,6 @@
 module github.com/golang-id/tour
 
-go 1.24.0
+go 1.25.0
 
 require (
 	git.sr.ht/~shulhan/pakakeh.go v0.61.0
